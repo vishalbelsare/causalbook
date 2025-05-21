@@ -1,0 +1,945 @@
+\begin{thebibliography}{107}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\expandafter\ifx\csname bibnamefont\endcsname\relax
+  \def\bibnamefont#1{#1}\fi
+\expandafter\ifx\csname bibfnamefont\endcsname\relax
+  \def\bibfnamefont#1{#1}\fi
+\expandafter\ifx\csname citenamefont\endcsname\relax
+  \def\citenamefont#1{#1}\fi
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\providecommand{\bibinfo}[2]{#2}
+\providecommand{\eprint}[2][]{\url{#2}}
+
+\bibitem[{\citenamefont{Abadie et~al.}(2011)\citenamefont{Abadie, Diamond, and
+  Hainmueller}}]{Synth}
+\bibinfo{author}{\bibnamefont{Abadie}, \bibfnamefont{Alberto}},
+  \bibinfo{author}{\bibfnamefont{Alexis} \bibnamefont{Diamond}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{Jens}
+  \bibnamefont{Hainmueller}}. \bibinfo{year}{2011}.
+\newblock \bibinfo{title}{{Synth}: An {R} package for synthetic control methods
+  in comparative case studies}.
+\newblock \emph{\bibinfo{journal}{Journal of Statistical Software}}
+  \bibinfo{volume}{42}(\bibinfo{number}{13}):\penalty0 \bibinfo{pages}{1--17}.
+
+\bibitem[{\citenamefont{Abadie et~al.}(2020)\citenamefont{Abadie, Diamond, and
+  Hainmueller}}]{abadie2020synth}
+---------. \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{Synth: Stata module to implement synthetic control
+  methods for comparative case studies}.
+
+\bibitem[{\citenamefont{Arel-Bundock}()}]{modelsummary}
+\bibinfo{author}{\bibnamefont{Arel-Bundock}, \bibfnamefont{Vincent}}.
+\newblock \emph{\bibinfo{title}{modelsummary: Summary tables and plots for
+  statistical models and data: Beautiful, customizable, and
+  publication-ready}}.
+\newblock \bibinfo{note}{R package version 0.6.6}.
+
+\bibitem[{\citenamefont{Bates et~al.}(2015)\citenamefont{Bates, M{\"a}chler,
+  Bolker, and Walker}}]{lme4}
+\bibinfo{author}{\bibnamefont{Bates}, \bibfnamefont{Douglas}},
+  \bibinfo{author}{\bibfnamefont{Martin} \bibnamefont{M{\"a}chler}},
+  \bibinfo{author}{\bibfnamefont{Ben} \bibnamefont{Bolker}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{Steve} \bibnamefont{Walker}}.
+  \bibinfo{year}{2015}.
+\newblock \bibinfo{title}{Fitting linear mixed-effects models using {lme4}}.
+\newblock \emph{\bibinfo{journal}{Journal of Statistical Software}}
+  \bibinfo{volume}{67}(\bibinfo{number}{1}):\penalty0 \bibinfo{pages}{1--48}.
+
+\bibitem[{\citenamefont{Becker and Caliendo}(2007)}]{becker2007sensitivity}
+\bibinfo{author}{\bibnamefont{Becker}, \bibfnamefont{Sascha~O}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{Marco}
+  \bibnamefont{Caliendo}}. \bibinfo{year}{2007}.
+\newblock \bibinfo{title}{Sensitivity analysis for average treatment effects}.
+\newblock \emph{\bibinfo{journal}{The stata journal}}
+  \bibinfo{volume}{7}(\bibinfo{number}{1}):\penalty0 \bibinfo{pages}{71--83}.
+
+\bibitem[{\citenamefont{Berg\'e}(2018)}]{fixest}
+\bibinfo{author}{\bibnamefont{Berg\'e}, \bibfnamefont{Laurent}}.
+  \bibinfo{year}{2018}.
+\newblock \bibinfo{title}{Efficient estimation of maximum likelihood models
+  with multiple fixed-effects: the {R} package {FENmlm}}.
+\newblock \emph{\bibinfo{journal}{CREA Discussion Papers}}
+  (\bibinfo{number}{13}).
+
+\bibitem[{\citenamefont{Blackwell et~al.}(2009)\citenamefont{Blackwell, Iacus,
+  King, and Porro}}]{blackwell2009cem}
+\bibinfo{author}{\bibnamefont{Blackwell}, \bibfnamefont{Matthew}},
+  \bibinfo{author}{\bibfnamefont{Stefano} \bibnamefont{Iacus}},
+  \bibinfo{author}{\bibfnamefont{Gary} \bibnamefont{King}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{Giuseppe} \bibnamefont{Porro}}.
+  \bibinfo{year}{2009}.
+\newblock \bibinfo{title}{cem: Coarsened exact matching in stata}.
+\newblock \emph{\bibinfo{journal}{The Stata Journal}}
+  \bibinfo{volume}{9}(\bibinfo{number}{4}):\penalty0 \bibinfo{pages}{524--546}.
+
+\bibitem[{\citenamefont{Bodory and Huber}(2020)}]{causalweight}
+\bibinfo{author}{\bibnamefont{Bodory}, \bibfnamefont{Hugo}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{Martin} \bibnamefont{Huber}}.
+  \bibinfo{year}{2020}.
+\newblock \emph{\bibinfo{title}{causalweight: Estimation methods for causal
+  inference based on inverse probability weighting}}.
+\newblock \bibinfo{note}{R package version 1.0.0}.
+
+\bibitem[{\citenamefont{Brathwaite and
+  Walker}(2018)}]{brathwaite2018asymmetric}
+\bibinfo{author}{\bibnamefont{Brathwaite}, \bibfnamefont{Timothy}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{Joan~L}
+  \bibnamefont{Walker}}. \bibinfo{year}{2018}.
+\newblock \bibinfo{title}{Asymmetric, closed-form, finite-parameter models of
+  multinomial choice}.
+\newblock \emph{\bibinfo{journal}{Journal of choice modelling}}
+  \bibinfo{volume}{29}:\penalty0 \bibinfo{pages}{78--112}.
+
+\bibitem[{\citenamefont{Bravo et~al.}(2022)\citenamefont{Bravo, Roth, and
+  Rambachan}}]{bravo2022honestdid}
+\bibinfo{author}{\bibnamefont{Bravo}, \bibfnamefont{Mauricio~Caceres}},
+  \bibinfo{author}{\bibfnamefont{Jonathan} \bibnamefont{Roth}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{Ashesh}
+  \bibnamefont{Rambachan}}. \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{Honestdid: Stata module implementing the honestdid r
+  package}.
+
+\bibitem[{\citenamefont{Bryan}(2017)}]{gapminder}
+\bibinfo{author}{\bibnamefont{Bryan}, \bibfnamefont{Jennifer}}.
+  \bibinfo{year}{2017}.
+\newblock \emph{\bibinfo{title}{gapminder: Data from gapminder}}.
+\newblock \bibinfo{note}{R package version 0.3.0}.
+
+\bibitem[{\citenamefont{Burke}(2021)}]{stargazerpy}
+\bibinfo{author}{\bibnamefont{Burke}, \bibfnamefont{Matthew}}.
+  \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{Stargazer: A python port of the r stargazer package}.
+
+\bibitem[{\citenamefont{Callaway and Sant'Anna}(2020{\natexlab{a}})}]{did1}
+\bibinfo{author}{\bibnamefont{Callaway}, \bibfnamefont{Brantly}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{Pedro~H.C.}
+  \bibnamefont{Sant'Anna}}. \bibinfo{year}{2020}{\natexlab{a}}.
+\newblock \bibinfo{title}{did: Difference in differences}.
+\newblock \bibinfo{note}{R package version 2.0.1.906}.
+
+\bibitem[{\citenamefont{Callaway and Sant'Anna}(2020{\natexlab{b}})}]{did2}
+---------. \bibinfo{year}{2020}{\natexlab{b}}.
+\newblock \bibinfo{title}{Difference-in-differences with multiple time
+  periods}.
+\newblock \emph{\bibinfo{journal}{Forthcoming at the Journal of Econometrics}}.
+
+\bibitem[{\citenamefont{Calonico et~al.}(2017)\citenamefont{Calonico, Cattaneo,
+  Farrell, and Titiunik}}]{calonico2017rdrobust}
+\bibinfo{author}{\bibnamefont{Calonico}, \bibfnamefont{Sebastian}},
+  \bibinfo{author}{\bibfnamefont{Matias~D} \bibnamefont{Cattaneo}},
+  \bibinfo{author}{\bibfnamefont{Max~H} \bibnamefont{Farrell}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{Rocio}
+  \bibnamefont{Titiunik}}. \bibinfo{year}{2017}.
+\newblock \bibinfo{title}{rdrobust: Software for regression-discontinuity
+  designs}.
+\newblock \emph{\bibinfo{journal}{The Stata Journal}}
+  \bibinfo{volume}{17}(\bibinfo{number}{2}):\penalty0
+  \bibinfo{pages}{372--404}.
+
+\bibitem[{\citenamefont{Calonico et~al.}(2021)\citenamefont{Calonico, Cattaneo,
+  Farrell, and Titiunik}}]{rdrobust}
+\bibinfo{author}{\bibnamefont{Calonico}, \bibfnamefont{Sebastian}},
+  \bibinfo{author}{\bibfnamefont{Matias~D.} \bibnamefont{Cattaneo}},
+  \bibinfo{author}{\bibfnamefont{Max~H.} \bibnamefont{Farrell}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{Rocio}
+  \bibnamefont{Titiunik}}. \bibinfo{year}{2021}.
+\newblock \emph{\bibinfo{title}{rdrobust: Robust data-driven statistical
+  inference in regression-discontinuity designs}}.
+\newblock \bibinfo{note}{R package version 1.0.1}.
+
+\bibitem[{\citenamefont{Canty and Ripley}(2021)}]{boot}
+\bibinfo{author}{\bibnamefont{Canty}, \bibfnamefont{Angelo}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{B.~D.} \bibnamefont{Ripley}}.
+  \bibinfo{year}{2021}.
+\newblock \emph{\bibinfo{title}{boot: Bootstrap r (s-plus) functions}}.
+\newblock \bibinfo{note}{R package version 1.3-27}.
+
+\bibitem[{\citenamefont{Cattaneo et~al.}(2023)\citenamefont{Cattaneo, Feng,
+  Palomba, and Titiunik}}]{scpi}
+\bibinfo{author}{\bibnamefont{Cattaneo}, \bibfnamefont{Matias}},
+  \bibinfo{author}{\bibfnamefont{Yingjie} \bibnamefont{Feng}},
+  \bibinfo{author}{\bibfnamefont{Filippo} \bibnamefont{Palomba}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{Rocio}
+  \bibnamefont{Titiunik}}. \bibinfo{year}{2023}.
+\newblock \emph{\bibinfo{title}{scpi: Prediction intervals for synthetic
+  control methods with multiple treated units and staggered adoption}}.
+\newblock \bibinfo{note}{R package version 2.2.5}.
+
+\bibitem[{\citenamefont{Cattaneo et~al.}(2022)\citenamefont{Cattaneo, Feng,
+  Palomba, and Titiunik}}]{cattaneo2022scpi}
+\bibinfo{author}{\bibnamefont{Cattaneo}, \bibfnamefont{Matias~D}},
+  \bibinfo{author}{\bibfnamefont{Yingjie} \bibnamefont{Feng}},
+  \bibinfo{author}{\bibfnamefont{Filippo} \bibnamefont{Palomba}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{Rocio}
+  \bibnamefont{Titiunik}}. \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{scpi: Uncertainty quantification for synthetic
+  control methods}.
+\newblock \emph{\bibinfo{journal}{arXiv preprint arXiv:2202.05984}}.
+
+\bibitem[{\citenamefont{Cattaneo
+  et~al.}(2021{\natexlab{a}})\citenamefont{Cattaneo, Jansson, and
+  Ma}}]{rddensity}
+\bibinfo{author}{\bibnamefont{Cattaneo}, \bibfnamefont{Matias~D.}},
+  \bibinfo{author}{\bibfnamefont{Michael} \bibnamefont{Jansson}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{Xinwei} \bibnamefont{Ma}}.
+  \bibinfo{year}{2021}{\natexlab{a}}.
+\newblock \emph{\bibinfo{title}{rddensity: Manipulation testing based on
+  density discontinuity}}.
+\newblock \bibinfo{note}{R package version 2.2}.
+
+\bibitem[{\citenamefont{Cattaneo et~al.}(2019)\citenamefont{Cattaneo, Titiunik,
+  and Vazquez-Bare}}]{cattaneo2019power}
+\bibinfo{author}{\bibnamefont{Cattaneo}, \bibfnamefont{Matias~D}},
+  \bibinfo{author}{\bibfnamefont{Rocio} \bibnamefont{Titiunik}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{Gonzalo}
+  \bibnamefont{Vazquez-Bare}}. \bibinfo{year}{2019}.
+\newblock \bibinfo{title}{Power calculations for regression-discontinuity
+  designs}.
+\newblock \emph{\bibinfo{journal}{The Stata Journal}}
+  \bibinfo{volume}{19}(\bibinfo{number}{1}):\penalty0
+  \bibinfo{pages}{210--245}.
+
+\bibitem[{\citenamefont{Cattaneo
+  et~al.}(2020{\natexlab{a}})\citenamefont{Cattaneo, Titiunik, and
+  Vazquez-Bare}}]{cattaneo2020rdmulti}
+---------. \bibinfo{year}{2020}{\natexlab{a}}.
+\newblock \bibinfo{title}{rdmulti: Rd designs with multiple cutoffs or multiple
+  scores}.
+
+\bibitem[{\citenamefont{Cattaneo
+  et~al.}(2020{\natexlab{b}})\citenamefont{Cattaneo, Titiunik, and
+  Vazquez-Bare}}]{rdpower}
+\bibinfo{author}{\bibnamefont{Cattaneo}, \bibfnamefont{Matias~D.}},
+  \bibinfo{author}{\bibfnamefont{Rocio} \bibnamefont{Titiunik}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{Gonzalo}
+  \bibnamefont{Vazquez-Bare}}. \bibinfo{year}{2020}{\natexlab{b}}.
+\newblock \emph{\bibinfo{title}{rdpower: Power calculations for rd designs}}.
+\newblock \bibinfo{note}{R package version 2.0}.
+
+\bibitem[{\citenamefont{Cattaneo
+  et~al.}(2021{\natexlab{b}})\citenamefont{Cattaneo, Titiunik, and
+  Vazquez-Bare}}]{rdmulti}
+---------. \bibinfo{year}{2021}{\natexlab{b}}.
+\newblock \emph{\bibinfo{title}{rdmulti: Analysis of rd designs with multiple
+  cutoffs or scores}}.
+\newblock \bibinfo{note}{R package version 0.7}.
+
+\bibitem[{\citenamefont{Chang}(2014)}]{extrafont}
+\bibinfo{author}{\bibnamefont{Chang}, \bibfnamefont{Winston}}.
+  \bibinfo{year}{2014}.
+\newblock \emph{\bibinfo{title}{extrafont: Tools for using fonts}}.
+\newblock \bibinfo{note}{R package version 0.17}.
+
+\bibitem[{\citenamefont{Chauss{\'e}}(2010)}]{gmm}
+\bibinfo{author}{\bibnamefont{Chauss{\'e}}, \bibfnamefont{Pierre}}.
+  \bibinfo{year}{2010}.
+\newblock \bibinfo{title}{Computing generalized method of moments and
+  generalized empirical likelihood with {R}}.
+\newblock \emph{\bibinfo{journal}{Journal of Statistical Software}}
+  \bibinfo{volume}{34}(\bibinfo{number}{11}):\penalty0 \bibinfo{pages}{1--35}.
+
+\bibitem[{\citenamefont{Chausse}(2023)}]{momentfit}
+\bibinfo{author}{\bibnamefont{Chausse}, \bibfnamefont{Pierre}}.
+  \bibinfo{year}{2023}.
+\newblock \emph{\bibinfo{title}{momentfit: Methods of moments}}.
+\newblock \bibinfo{note}{R package version 0.5}.
+
+\bibitem[{\citenamefont{Chen et~al.}(2021)\citenamefont{Chen, Chernozhukov,
+  Fernandez-Val, and Luo}}]{SortedEffects}
+\bibinfo{author}{\bibnamefont{Chen}, \bibfnamefont{Shuowen}},
+  \bibinfo{author}{\bibfnamefont{Victor} \bibnamefont{Chernozhukov}},
+  \bibinfo{author}{\bibfnamefont{Ivan} \bibnamefont{Fernandez-Val}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{Ye}~\bibnamefont{Luo}}.
+  \bibinfo{year}{2021}.
+\newblock \emph{\bibinfo{title}{Sortedeffects: Estimation and inference methods
+  for sorted causal effects and classification analysis}}.
+\newblock \bibinfo{note}{R package version 1.3.0}.
+
+\bibitem[{\citenamefont{Chiapello}(2018)}]{chiapello2018balancetable}
+\bibinfo{author}{\bibnamefont{Chiapello}, \bibfnamefont{Mattia}}.
+  \bibinfo{year}{2018}.
+\newblock \bibinfo{title}{Balancetable: Stata module to build a balance table
+  and print it in a latex file or an excel file}.
+
+\bibitem[{\citenamefont{Cinelli et~al.}(2020)\citenamefont{Cinelli, Ferwerda,
+  and Hazlett}}]{cinelli2020sensemakr}
+\bibinfo{author}{\bibnamefont{Cinelli}, \bibfnamefont{Carlos}},
+  \bibinfo{author}{\bibfnamefont{Jeremy} \bibnamefont{Ferwerda}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{Chad}
+  \bibnamefont{Hazlett}}. \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{sensemakr: Sensitivity analysis tools for ols in r
+  and stata}.
+\newblock \emph{\bibinfo{journal}{Available at SSRN 3588978}}.
+
+\bibitem[{\citenamefont{Correia}(2018)}]{correia2018ivreghdfe}
+\bibinfo{author}{\bibnamefont{Correia}, \bibfnamefont{Sergio}}.
+  \bibinfo{year}{2018}.
+\newblock \bibinfo{title}{Ivreghdfe: Stata module for extended instrumental
+  variable regressions with multiple levels of fixed effects}.
+
+\bibitem[{\citenamefont{Correia et~al.}(2016)}]{correia2016reghdfe}
+\bibinfo{author}{\bibnamefont{Correia}, \bibfnamefont{Sergio}},
+  \bibnamefont{et~al.} \bibinfo{year}{2016}.
+\newblock \bibinfo{title}{reghdfe: Estimating linear models with multi-way
+  fixed effects}.
+\newblock In \emph{\bibinfo{booktitle}{2016 stata conference}}.
+  \bibinfo{number}{24}, \bibinfo{organization}{Stata Users Group}.
+
+\bibitem[{\citenamefont{Dancho and Vaughan}(2021)}]{tidyquant}
+\bibinfo{author}{\bibnamefont{Dancho}, \bibfnamefont{Matt}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{Davis} \bibnamefont{Vaughan}}.
+  \bibinfo{year}{2021}.
+\newblock \emph{\bibinfo{title}{tidyquant: Tidy quantitative financial
+  analysis}}.
+\newblock \bibinfo{note}{R package version 1.0.3}.
+
+\bibitem[{\citenamefont{Dionisi}(2022)}]{pydifferences}
+\bibinfo{author}{\bibnamefont{Dionisi}, \bibfnamefont{Bernardo}}.
+  \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{Difference-in-differences estimation and inference
+  for python}.
+
+\bibitem[{\citenamefont{Dunford}(2021)}]{tidysynth}
+\bibinfo{author}{\bibnamefont{Dunford}, \bibfnamefont{Eric}}.
+  \bibinfo{year}{2021}.
+\newblock \emph{\bibinfo{title}{tidysynth: A tidy implementation of the
+  synthetic control method}}.
+\newblock \bibinfo{note}{R package version 0.1.0}.
+
+\bibitem[{\citenamefont{Fernihough}(2019)}]{mfx}
+\bibinfo{author}{\bibnamefont{Fernihough}, \bibfnamefont{Alan}}.
+  \bibinfo{year}{2019}.
+\newblock \emph{\bibinfo{title}{mfx: Marginal effects, odds ratios and
+  incidence rate ratios for glms}}.
+\newblock \bibinfo{note}{R package version 1.2-2}.
+
+\bibitem[{\citenamefont{Finlay et~al.}(2014)\citenamefont{Finlay, Magnusson,
+  and Schaffer}}]{finlay2014weakiv10}
+\bibinfo{author}{\bibnamefont{Finlay}, \bibfnamefont{Keith}},
+  \bibinfo{author}{\bibfnamefont{Leandro} \bibnamefont{Magnusson}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{Mark}
+  \bibnamefont{Schaffer}}. \bibinfo{year}{2014}.
+\newblock \bibinfo{title}{Weakiv10: Stata module to perform
+  weak-instrument-robust tests and confidence intervals for
+  instrumental-variable (iv) estimation of linear, probit and tobit models}.
+
+\bibitem[{\citenamefont{Fischer and Michuda}(2023)}]{wildboottestpy}
+\bibinfo{author}{\bibnamefont{Fischer}, \bibfnamefont{Alexander}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{Aleksandr}
+  \bibnamefont{Michuda}}. \bibinfo{year}{2023}.
+\newblock \bibinfo{title}{wildboottest in python}.
+
+\bibitem[{\citenamefont{Fischer and Roodman}(2021)}]{fwildclusterboot}
+\bibinfo{author}{\bibnamefont{Fischer}, \bibfnamefont{Alexander}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{David}
+  \bibnamefont{Roodman}}. \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{fwildclusterboot: Fast wild cluster bootstrap
+  inference for linear regression models (version 0.13.0)}.
+
+\bibitem[{\citenamefont{Fox and Weisberg}(2019)}]{car}
+\bibinfo{author}{\bibnamefont{Fox}, \bibfnamefont{John}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{Sanford} \bibnamefont{Weisberg}}.
+  \bibinfo{year}{2019}.
+\newblock \emph{\bibinfo{title}{An {R} companion to applied regression}}.
+\newblock \bibinfo{edition}{3rd} ed. \bibinfo{address}{Thousand Oaks {CA}}:\@
+  \bibinfo{publisher}{Sage}.
+
+\bibitem[{\citenamefont{Friedman et~al.}(2010)\citenamefont{Friedman, Hastie,
+  and Tibshirani}}]{glmnet}
+\bibinfo{author}{\bibnamefont{Friedman}, \bibfnamefont{Jerome}},
+  \bibinfo{author}{\bibfnamefont{Trevor} \bibnamefont{Hastie}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{Robert}
+  \bibnamefont{Tibshirani}}. \bibinfo{year}{2010}.
+\newblock \bibinfo{title}{Regularization paths for generalized linear models
+  via coordinate descent}.
+\newblock \emph{\bibinfo{journal}{Journal of Statistical Software}}
+  \bibinfo{volume}{33}(\bibinfo{number}{1}):\penalty0 \bibinfo{pages}{1--22}.
+
+\bibitem[{\citenamefont{Galiani and Quistorff}(2017)}]{galiani2017synth_runner}
+\bibinfo{author}{\bibnamefont{Galiani}, \bibfnamefont{Sebastian}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{Brian}
+  \bibnamefont{Quistorff}}. \bibinfo{year}{2017}.
+\newblock \bibinfo{title}{The synth\_runner package: Utilities to automate
+  synthetic control estimation using synth}.
+\newblock \emph{\bibinfo{journal}{The Stata Journal}}
+  \bibinfo{volume}{17}(\bibinfo{number}{4}):\penalty0
+  \bibinfo{pages}{834--849}.
+
+\bibitem[{\citenamefont{Gangl}(2004)}]{gangl2004rbounds}
+\bibinfo{author}{\bibnamefont{Gangl}, \bibfnamefont{Markus}}.
+  \bibinfo{year}{2004}.
+\newblock \bibinfo{title}{Rbounds: Stata module to perform rosenbaum
+  sensitivity analysis for average treatment effects on the treated}.
+
+\bibitem[{\citenamefont{Gaure}(2013)}]{lfe1}
+\bibinfo{author}{\bibnamefont{Gaure}, \bibfnamefont{Simen}}.
+  \bibinfo{year}{2013}.
+\newblock \bibinfo{title}{{lfe}: Linear group fixed effects}.
+\newblock \emph{\bibinfo{journal}{The R Journal}}
+  \bibinfo{volume}{5}(\bibinfo{number}{2}):\penalty0 \bibinfo{pages}{104--117}.
+\newblock \bibinfo{note}{User documentation of the 'lfe' package}.
+
+\bibitem[{\citenamefont{Gautier}(2018)}]{gautier2018rpy2}
+\bibinfo{author}{\bibnamefont{Gautier}, \bibfnamefont{Laurent}}.
+  \bibinfo{year}{2018}.
+\newblock \bibinfo{title}{rpy2-r in python}.
+
+\bibitem[{\citenamefont{Genz et~al.}(2020)\citenamefont{Genz, Bretz, Miwa, Mi,
+  Leisch, Scheipl, and Hothorn}}]{mvtnorm}
+\bibinfo{author}{\bibnamefont{Genz}, \bibfnamefont{Alan}},
+  \bibinfo{author}{\bibfnamefont{Frank} \bibnamefont{Bretz}},
+  \bibinfo{author}{\bibfnamefont{Tetsuhisa} \bibnamefont{Miwa}},
+  \bibinfo{author}{\bibfnamefont{Xuefei} \bibnamefont{Mi}},
+  \bibinfo{author}{\bibfnamefont{Friedrich} \bibnamefont{Leisch}},
+  \bibinfo{author}{\bibfnamefont{Fabian} \bibnamefont{Scheipl}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{Torsten}
+  \bibnamefont{Hothorn}}. \bibinfo{year}{2020}.
+\newblock \emph{\bibinfo{title}{{mvtnorm}: Multivariate normal and t
+  distributions}}.
+\newblock \bibinfo{note}{R package version 1.1-1}.
+
+\bibitem[{\citenamefont{Gerard et~al.}(2020)\citenamefont{Gerard, Rokkanen, and
+  Rothe}}]{gerard2020bounds}
+\bibinfo{author}{\bibnamefont{Gerard}, \bibfnamefont{Fran{\c{c}}ois}},
+  \bibinfo{author}{\bibfnamefont{Miikka} \bibnamefont{Rokkanen}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{Christoph}
+  \bibnamefont{Rothe}}. \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{Bounds on treatment effects in regression
+  discontinuity designs with a manipulated running variable}.
+\newblock \emph{\bibinfo{journal}{Quantitative Economics}}
+  \bibinfo{volume}{11}(\bibinfo{number}{3}):\penalty0
+  \bibinfo{pages}{839--870}.
+
+\bibitem[{\citenamefont{Grolemund and Wickham}(2011)}]{lubridate}
+\bibinfo{author}{\bibnamefont{Grolemund}, \bibfnamefont{Garrett}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{Hadley}
+  \bibnamefont{Wickham}}. \bibinfo{year}{2011}.
+\newblock \bibinfo{title}{Dates and times made easy with {lubridate}}.
+\newblock \emph{\bibinfo{journal}{Journal of Statistical Software}}
+  \bibinfo{volume}{40}(\bibinfo{number}{3}):\penalty0 \bibinfo{pages}{1--25}.
+
+\bibitem[{\citenamefont{Hainmueller}(2014)}]{ebal}
+\bibinfo{author}{\bibnamefont{Hainmueller}, \bibfnamefont{Jens}}.
+  \bibinfo{year}{2014}.
+\newblock \emph{\bibinfo{title}{ebal: Entropy reweighting to create balanced
+  samples}}.
+\newblock \bibinfo{note}{R package version 0.1-6}.
+
+\bibitem[{\citenamefont{Hainmueller and Xu}(2013)}]{hainmueller2013ebalance}
+\bibinfo{author}{\bibnamefont{Hainmueller}, \bibfnamefont{Jens}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{Yiqing} \bibnamefont{Xu}}.
+  \bibinfo{year}{2013}.
+\newblock \bibinfo{title}{Ebalance: A stata package for entropy balancing}.
+\newblock \emph{\bibinfo{journal}{Journal of Statistical Software}}
+  \bibinfo{volume}{54}(\bibinfo{number}{7}).
+
+\bibitem[{\citenamefont{Harris et~al.}(2020)\citenamefont{Harris, Millman,
+  van~der Walt, Gommers, Virtanen, Cournapeau, Wieser, Taylor, Berg, Smith,
+  Kern, Picus, Hoyer, van Kerkwijk, Brett, Haldane, Fernández~del Río, Wiebe,
+  Peterson, Gérard-Marchant, Sheppard, Reddy, Weckesser, Abbasi, Gohlke, and
+  Oliphant}}]{2020NumPy-Array}
+\bibinfo{author}{\bibnamefont{Harris}, \bibfnamefont{Charles~R.}},
+  \bibinfo{author}{\bibfnamefont{K.~Jarrod} \bibnamefont{Millman}},
+  \bibinfo{author}{\bibfnamefont{Stéfan~J} \bibnamefont{van~der Walt}},
+  \bibinfo{author}{\bibfnamefont{Ralf} \bibnamefont{Gommers}},
+  \bibinfo{author}{\bibfnamefont{Pauli} \bibnamefont{Virtanen}},
+  \bibinfo{author}{\bibfnamefont{David} \bibnamefont{Cournapeau}},
+  \bibinfo{author}{\bibfnamefont{Eric} \bibnamefont{Wieser}},
+  \bibinfo{author}{\bibfnamefont{Julian} \bibnamefont{Taylor}},
+  \bibinfo{author}{\bibfnamefont{Sebastian} \bibnamefont{Berg}},
+  \bibinfo{author}{\bibfnamefont{Nathaniel~J.} \bibnamefont{Smith}},
+  \bibinfo{author}{\bibfnamefont{Robert} \bibnamefont{Kern}},
+  \bibinfo{author}{\bibfnamefont{Matti} \bibnamefont{Picus}},
+  \bibinfo{author}{\bibfnamefont{Stephan} \bibnamefont{Hoyer}},
+  \bibinfo{author}{\bibfnamefont{Marten~H.} \bibnamefont{van Kerkwijk}},
+  \bibinfo{author}{\bibfnamefont{Matthew} \bibnamefont{Brett}},
+  \bibinfo{author}{\bibfnamefont{Allan} \bibnamefont{Haldane}},
+  \bibinfo{author}{\bibfnamefont{Jaime} \bibnamefont{Fernández~del Río}},
+  \bibinfo{author}{\bibfnamefont{Mark} \bibnamefont{Wiebe}},
+  \bibinfo{author}{\bibfnamefont{Pearu} \bibnamefont{Peterson}},
+  \bibinfo{author}{\bibfnamefont{Pierre} \bibnamefont{Gérard-Marchant}},
+  \bibinfo{author}{\bibfnamefont{Kevin} \bibnamefont{Sheppard}},
+  \bibinfo{author}{\bibfnamefont{Tyler} \bibnamefont{Reddy}},
+  \bibinfo{author}{\bibfnamefont{Warren} \bibnamefont{Weckesser}},
+  \bibinfo{author}{\bibfnamefont{Hameer} \bibnamefont{Abbasi}},
+  \bibinfo{author}{\bibfnamefont{Christoph} \bibnamefont{Gohlke}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{Travis~E.}
+  \bibnamefont{Oliphant}}. \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{Array programming with {NumPy}}.
+\newblock \emph{\bibinfo{journal}{Nature}} \bibinfo{volume}{585}:\penalty0
+  \bibinfo{pages}{357–362}.
+
+\bibitem[{\citenamefont{Henry and Wickham}(2020)}]{purrr}
+\bibinfo{author}{\bibnamefont{Henry}, \bibfnamefont{Lionel}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{Hadley} \bibnamefont{Wickham}}.
+  \bibinfo{year}{2020}.
+\newblock \emph{\bibinfo{title}{purrr: Functional programming tools}}.
+\newblock \bibinfo{note}{R package version 0.3.4}.
+
+\bibitem[{\citenamefont{Hocking}(2021)}]{directlabels}
+\bibinfo{author}{\bibnamefont{Hocking}, \bibfnamefont{Toby~Dylan}}.
+  \bibinfo{year}{2021}.
+\newblock \emph{\bibinfo{title}{directlabels: Direct labels for multicolor
+  plots}}.
+\newblock \bibinfo{note}{R package version 2021.1.13}.
+
+\bibitem[{\citenamefont{Hunter}(2007)}]{hunter2007matplotlib}
+\bibinfo{author}{\bibnamefont{Hunter}, \bibfnamefont{John~D}}.
+  \bibinfo{year}{2007}.
+\newblock \bibinfo{title}{Matplotlib: A 2d graphics environment}.
+\newblock \emph{\bibinfo{journal}{IEEE Annals of the History of Computing}}
+  \bibinfo{volume}{9}(\bibinfo{number}{03}):\penalty0 \bibinfo{pages}{90--95}.
+
+\bibitem[{\citenamefont{Huntington-Klein}()}]{vtable}
+\bibinfo{author}{\bibnamefont{Huntington-Klein}, \bibfnamefont{Nick}}.
+\newblock \emph{\bibinfo{title}{vtable: Variable table for variable
+  documentation}}.
+\newblock \bibinfo{note}{R package version 1.3.1}.
+
+\bibitem[{\citenamefont{Huntington-Klein}(2021)}]{did2021}
+---------. \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{A stata wrapper for callaway and sant'anna's r
+  package did}.
+\newblock \bibinfo{note}{Https://github.com/NickCH-K/did}.
+
+\bibitem[{\citenamefont{Iacus et~al.}(2020)\citenamefont{Iacus, King, Porro,
+  and Nielsen}}]{cem}
+\bibinfo{author}{\bibnamefont{Iacus}, \bibfnamefont{Stefano~M.}},
+  \bibinfo{author}{\bibfnamefont{Gary} \bibnamefont{King}},
+  \bibinfo{author}{\bibfnamefont{Giuseppe} \bibnamefont{Porro}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{Richard}
+  \bibnamefont{Nielsen}}. \bibinfo{year}{2020}.
+\newblock \emph{\bibinfo{title}{cem: Coarsened exact matching}}.
+\newblock \bibinfo{note}{R package version 1.1.27}.
+
+\bibitem[{\citenamefont{Jann}(2019)}]{jann2019estout}
+\bibinfo{author}{\bibnamefont{Jann}, \bibfnamefont{Ben}}. \bibinfo{year}{2019}.
+\newblock \bibinfo{title}{Estout: Stata module to make regression tables}.
+
+\bibitem[{\citenamefont{Jiang and Small}(2014)}]{ivpack}
+\bibinfo{author}{\bibnamefont{Jiang}, \bibfnamefont{Yang}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{Dylan} \bibnamefont{Small}}.
+  \bibinfo{year}{2014}.
+\newblock \emph{\bibinfo{title}{ivpack: Instrumental variable estimation.}}
+\newblock \bibinfo{note}{R package version 1.2}.
+
+\bibitem[{\citenamefont{Kalainathan et~al.}(2020)\citenamefont{Kalainathan,
+  Goudet, and Dutta}}]{kalainathan2020causal}
+\bibinfo{author}{\bibnamefont{Kalainathan}, \bibfnamefont{Diviyan}},
+  \bibinfo{author}{\bibfnamefont{Olivier} \bibnamefont{Goudet}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{Ritik} \bibnamefont{Dutta}}.
+  \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{Causal discovery toolbox: Uncovering causal
+  relationships in python.}
+\newblock \emph{\bibinfo{journal}{Journal of Machine Learning Research}}
+  \bibinfo{volume}{21}(\bibinfo{number}{37}):\penalty0 \bibinfo{pages}{1--5}.
+
+\bibitem[{\citenamefont{Kalisch et~al.}(2012)\citenamefont{Kalisch, M\"achler,
+  Colombo, Maathuis, and B\"uhlmann}}]{pcalg}
+\bibinfo{author}{\bibnamefont{Kalisch}, \bibfnamefont{Markus}},
+  \bibinfo{author}{\bibfnamefont{Martin} \bibnamefont{M\"achler}},
+  \bibinfo{author}{\bibfnamefont{Diego} \bibnamefont{Colombo}},
+  \bibinfo{author}{\bibfnamefont{Marloes~H.} \bibnamefont{Maathuis}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{Peter}
+  \bibnamefont{B\"uhlmann}}. \bibinfo{year}{2012}.
+\newblock \bibinfo{title}{Causal inference using graphical models with the {R}
+  package {pcalg}}.
+\newblock \emph{\bibinfo{journal}{Journal of Statistical Software}}
+  \bibinfo{volume}{47}(\bibinfo{number}{11}):\penalty0 \bibinfo{pages}{1--26}.
+
+\bibitem[{\citenamefont{Kang et~al.}(2021)\citenamefont{Kang, Jiang, Zhao, and
+  Small}}]{ivmodel}
+\bibinfo{author}{\bibnamefont{Kang}, \bibfnamefont{Hyunseung}},
+  \bibinfo{author}{\bibfnamefont{Yang} \bibnamefont{Jiang}},
+  \bibinfo{author}{\bibfnamefont{Qingyuan} \bibnamefont{Zhao}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{Dylan} \bibnamefont{Small}}.
+  \bibinfo{year}{2021}.
+\newblock \emph{\bibinfo{title}{ivmodel: Statistical inference and sensitivity
+  analysis for instrumental variables model}}.
+\newblock \bibinfo{note}{R package version 1.9.0}.
+
+\bibitem[{\citenamefont{Kaspereit}(2020)}]{kaspereit2020eventstudy2}
+\bibinfo{author}{\bibnamefont{Kaspereit}, \bibfnamefont{Thomas}}.
+  \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{Eventstudy2: Stata module to perform event studies
+  with complex test statistics}.
+
+\bibitem[{\citenamefont{Kassambara}(2020)}]{ggpubr}
+\bibinfo{author}{\bibnamefont{Kassambara}, \bibfnamefont{Alboukadel}}.
+  \bibinfo{year}{2020}.
+\newblock \emph{\bibinfo{title}{ggpubr: 'ggplot2' based publication ready
+  plots}}.
+\newblock \bibinfo{note}{R package version 0.4.0}.
+
+\bibitem[{\citenamefont{Keele}(2022)}]{rbounds}
+\bibinfo{author}{\bibnamefont{Keele}, \bibfnamefont{Luke~J.}}
+  \bibinfo{year}{2022}.
+\newblock \emph{\bibinfo{title}{rbounds: Perform rosenbaum bounds sensitivity
+  tests for matched and unmatched data}}.
+\newblock \bibinfo{note}{R package version 2.2}.
+
+\bibitem[{\citenamefont{Kleiber and Zeileis}(2008)}]{AER}
+\bibinfo{author}{\bibnamefont{Kleiber}, \bibfnamefont{Christian}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{Achim}
+  \bibnamefont{Zeileis}}. \bibinfo{year}{2008}.
+\newblock \emph{\bibinfo{title}{Applied econometrics with {R}}}.
+\newblock \bibinfo{address}{New York}:\@ \bibinfo{publisher}{Springer-Verlag}.
+\newblock \bibinfo{note}{{ISBN} 978-0-387-77316-2}.
+
+\bibitem[{\citenamefont{Kolesar}(2021)}]{RDHonest}
+\bibinfo{author}{\bibnamefont{Kolesar}, \bibfnamefont{Michal}}.
+  \bibinfo{year}{2021}.
+\newblock \emph{\bibinfo{title}{Rdhonest: Honest inference in regression
+  discontinuity designs}}.
+\newblock \bibinfo{note}{R package version 0.3.2}.
+
+\bibitem[{\citenamefont{Leeper}(2021)}]{margins}
+\bibinfo{author}{\bibnamefont{Leeper}, \bibfnamefont{Thomas~J.}}
+  \bibinfo{year}{2021}.
+\newblock \emph{\bibinfo{title}{margins: Marginal effects for model objects}}.
+\newblock \bibinfo{note}{R package version 0.3.26}.
+
+\bibitem[{\citenamefont{Leuven and Sianesi}(2018)}]{leuven2018psmatch2}
+\bibinfo{author}{\bibnamefont{Leuven}, \bibfnamefont{Edwin}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{Barbara} \bibnamefont{Sianesi}}.
+  \bibinfo{year}{2018}.
+\newblock \bibinfo{title}{Psmatch2: Stata module to perform full mahalanobis
+  and propensity score matching, common support graphing, and covariate
+  imbalance testing}.
+
+\bibitem[{\citenamefont{Litwok}(2020)}]{litwok2020rmhbounds}
+\bibinfo{author}{\bibnamefont{Litwok}, \bibfnamefont{Daniel}}.
+  \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{Rmhbounds: Stata module to refine mhbounds to remove
+  the cap on the number of strata and replace the large sample approximation
+  for e and v with exact moments}.
+
+\bibitem[{\citenamefont{Long}(2020)}]{jtools}
+\bibinfo{author}{\bibnamefont{Long}, \bibfnamefont{Jacob~A.}}
+  \bibinfo{year}{2020}.
+\newblock \emph{\bibinfo{title}{jtools: Analysis and presentation of social
+  scientific data}}.
+\newblock \bibinfo{note}{R package version 2.1.0}.
+
+\bibitem[{\citenamefont{Lumley}(2020)}]{survey}
+\bibinfo{author}{\bibnamefont{Lumley}, \bibfnamefont{Thomas}}.
+  \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{survey: analysis of complex survey samples}.
+\newblock \bibinfo{note}{R package version 4.0}.
+
+\bibitem[{\citenamefont{Mander}(2014)}]{mander2014lars}
+\bibinfo{author}{\bibnamefont{Mander}, \bibfnamefont{Adrian}}.
+  \bibinfo{year}{2014}.
+\newblock \bibinfo{title}{Lars: Stata module to perform least angle
+  regression}.
+
+\bibitem[{\citenamefont{Marra and Radice}(2024)}]{}
+\bibinfo{author}{\bibnamefont{Marra}, \bibfnamefont{Giampiero}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{Rosalba}
+  \bibnamefont{Radice}}. \bibinfo{year}{2024}.
+\newblock \emph{\bibinfo{title}{Gjrm: Generalised joint regression modelling}}.
+
+\bibitem[{\citenamefont{McKinney et~al.}(2010)}]{mckinney2010data}
+\bibinfo{author}{\bibnamefont{McKinney}, \bibfnamefont{Wes}},
+  \bibnamefont{et~al.} \bibinfo{year}{2010}.
+\newblock \bibinfo{title}{Data structures for statistical computing in python}.
+\newblock In \emph{\bibinfo{booktitle}{Proceedings of the 9th python in science
+  conference}}, vol. \bibinfo{volume}{445}, \bibinfo{pages}{51--56}.
+  \bibinfo{organization}{Austin, TX}.
+
+\bibitem[{\citenamefont{Missing}(2020)}]{itertools}
+\bibinfo{author}{\bibnamefont{Missing}}. \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{itertools: Functions for creating efficient looping}.
+
+\bibitem[{\citenamefont{O'Hara-Wild et~al.}(2021)\citenamefont{O'Hara-Wild,
+  Hyndman, and Wang}}]{fable}
+\bibinfo{author}{\bibnamefont{O'Hara-Wild}, \bibfnamefont{Mitchell}},
+  \bibinfo{author}{\bibfnamefont{Rob} \bibnamefont{Hyndman}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{Earo} \bibnamefont{Wang}}.
+  \bibinfo{year}{2021}.
+\newblock \emph{\bibinfo{title}{fable: Forecasting models for tidy time
+  series}}.
+\newblock \bibinfo{note}{R package version 0.3.0}.
+
+\bibitem[{\citenamefont{Oprescu et~al.}()\citenamefont{Oprescu, Syrgkanis,
+  Battocchi, Hei, and Lewis}}]{oprescueconml}
+\bibinfo{author}{\bibnamefont{Oprescu}, \bibfnamefont{Miruna}},
+  \bibinfo{author}{\bibfnamefont{Vasilis} \bibnamefont{Syrgkanis}},
+  \bibinfo{author}{\bibfnamefont{Keith} \bibnamefont{Battocchi}},
+  \bibinfo{author}{\bibfnamefont{Maggie} \bibnamefont{Hei}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{Greg} \bibnamefont{Lewis}}.
+\newblock \bibinfo{title}{Econml: A machine learning library for estimating
+  heterogeneous treatment effects}.
+
+\bibitem[{\citenamefont{P et~al.}(2017)\citenamefont{P, G, and
+  R}}]{penalizedprobit}
+\bibinfo{author}{\bibnamefont{P}, \bibfnamefont{Filippou}},
+  \bibinfo{author}{\bibfnamefont{Marra} \bibnamefont{G}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{Radice} \bibnamefont{R}}.
+  \bibinfo{year}{2017}.
+\newblock \bibinfo{title}{Penalized likelihood estimation of a trivariate
+  additive probit model}.
+\newblock \emph{\bibinfo{journal}{Biostatistics}}.
+
+\bibitem[{\citenamefont{Pedregosa et~al.}(2011)\citenamefont{Pedregosa,
+  Varoquaux, Gramfort, Michel, Thirion, Grisel, Blondel, Prettenhofer, Weiss,
+  Dubourg et~al.}}]{pedregosa2011scikit}
+\bibinfo{author}{\bibnamefont{Pedregosa}, \bibfnamefont{Fabian}},
+  \bibinfo{author}{\bibfnamefont{Ga{\"e}l} \bibnamefont{Varoquaux}},
+  \bibinfo{author}{\bibfnamefont{Alexandre} \bibnamefont{Gramfort}},
+  \bibinfo{author}{\bibfnamefont{Vincent} \bibnamefont{Michel}},
+  \bibinfo{author}{\bibfnamefont{Bertrand} \bibnamefont{Thirion}},
+  \bibinfo{author}{\bibfnamefont{Olivier} \bibnamefont{Grisel}},
+  \bibinfo{author}{\bibfnamefont{Mathieu} \bibnamefont{Blondel}},
+  \bibinfo{author}{\bibfnamefont{Peter} \bibnamefont{Prettenhofer}},
+  \bibinfo{author}{\bibfnamefont{Ron} \bibnamefont{Weiss}},
+  \bibinfo{author}{\bibfnamefont{Vincent} \bibnamefont{Dubourg}},
+  \bibnamefont{et~al.} \bibinfo{year}{2011}.
+\newblock \bibinfo{title}{Scikit-learn: Machine learning in python}.
+\newblock \emph{\bibinfo{journal}{the Journal of machine Learning research}}
+  \bibinfo{volume}{12}:\penalty0 \bibinfo{pages}{2825--2830}.
+
+\bibitem[{\citenamefont{Rambachan and Roth}(2024)}]{honestdidR}
+\bibinfo{author}{\bibnamefont{Rambachan}, \bibfnamefont{Ashesh}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{Jonathan}
+  \bibnamefont{Roth}}. \bibinfo{year}{2024}.
+\newblock \emph{\bibinfo{title}{Honestdid: Robust inference in
+  difference-in-differences and event study designs}}.
+\newblock \bibinfo{note}{R package version 0.2.6}.
+
+\bibitem[{\citenamefont{Robinson et~al.}(2021)\citenamefont{Robinson, Hayes,
+  and Couch}}]{broom}
+\bibinfo{author}{\bibnamefont{Robinson}, \bibfnamefont{David}},
+  \bibinfo{author}{\bibfnamefont{Alex} \bibnamefont{Hayes}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{Simon} \bibnamefont{Couch}}.
+  \bibinfo{year}{2021}.
+\newblock \emph{\bibinfo{title}{broom: Convert statistical objects into tidy
+  tibbles}}.
+\newblock \bibinfo{note}{R package version 0.7.6}.
+
+\bibitem[{\citenamefont{Roodman et~al.}(2019)\citenamefont{Roodman, Nielsen,
+  MacKinnon, and Webb}}]{roodman2019fast}
+\bibinfo{author}{\bibnamefont{Roodman}, \bibfnamefont{David}},
+  \bibinfo{author}{\bibfnamefont{Morten~{\O}rregaard} \bibnamefont{Nielsen}},
+  \bibinfo{author}{\bibfnamefont{James~G} \bibnamefont{MacKinnon}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{Matthew~D}
+  \bibnamefont{Webb}}. \bibinfo{year}{2019}.
+\newblock \bibinfo{title}{Fast and wild: Bootstrap inference in stata using
+  boottest}.
+\newblock \emph{\bibinfo{journal}{The Stata Journal}}
+  \bibinfo{volume}{19}(\bibinfo{number}{1}):\penalty0 \bibinfo{pages}{4--60}.
+
+\bibitem[{\citenamefont{Rudnytskyi}(2020)}]{estudy2}
+\bibinfo{author}{\bibnamefont{Rudnytskyi}, \bibfnamefont{Iegor}}.
+  \bibinfo{year}{2020}.
+\newblock \emph{\bibinfo{title}{estudy2: An implementation of parametric and
+  nonparametric event study}}.
+\newblock \bibinfo{note}{R package version 0.9.2}.
+
+\bibitem[{\citenamefont{Sant'Anna and Zhao}(2020)}]{DRDID}
+\bibinfo{author}{\bibnamefont{Sant'Anna}, \bibfnamefont{Pedro H.~C.}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{Jun} \bibnamefont{Zhao}}.
+  \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{Doubly robust difference-in-differences estimators}.
+\newblock \emph{\bibinfo{journal}{Journal of Econometrics}}
+  \bibinfo{volume}{219}:\penalty0 \bibinfo{pages}{101--122}.
+
+\bibitem[{\citenamefont{Saxton and Dembinski}(2020)}]{resample}
+\bibinfo{author}{\bibnamefont{Saxton}, \bibfnamefont{Daniel}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{Hans}
+  \bibnamefont{Dembinski}}. \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{resample: tools for randomization-based inference in
+  python}.
+
+\bibitem[{\citenamefont{Seabold and Perktold}(2010)}]{seabold2010statsmodels}
+\bibinfo{author}{\bibnamefont{Seabold}, \bibfnamefont{Skipper}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{Josef}
+  \bibnamefont{Perktold}}. \bibinfo{year}{2010}.
+\newblock \bibinfo{title}{Statsmodels: Econometric and statistical modeling
+  with python}.
+\newblock In \emph{\bibinfo{booktitle}{Proceedings of the 9th python in science
+  conference}}, vol.~\bibinfo{volume}{57}, \bibinfo{pages}{61}.
+  \bibinfo{organization}{Austin, TX}.
+
+\bibitem[{\citenamefont{Sekhon}(2011)}]{Matching}
+\bibinfo{author}{\bibnamefont{Sekhon}, \bibfnamefont{Jasjeet~S.}}
+  \bibinfo{year}{2011}.
+\newblock \bibinfo{title}{Multivariate and propensity score matching software
+  with automated balance optimization: The {Matching} package for {R}}.
+\newblock \emph{\bibinfo{journal}{Journal of Statistical Software}}
+  \bibinfo{volume}{42}(\bibinfo{number}{7}):\penalty0 \bibinfo{pages}{1--52}.
+
+\bibitem[{\citenamefont{Sheppard}(2020{\natexlab{a}})}]{arch}
+\bibinfo{author}{\bibnamefont{Sheppard}, \bibfnamefont{Kevin}}.
+  \bibinfo{year}{2020}{\natexlab{a}}.
+\newblock \bibinfo{title}{arch: Autoregressive conditional heteroskedasticity
+  (arch) and other tools for financial econometrics}.
+
+\bibitem[{\citenamefont{Sheppard}(2020{\natexlab{b}})}]{linearmodels}
+---------. \bibinfo{year}{2020}{\natexlab{b}}.
+\newblock \bibinfo{title}{Linear (regression) models for python}.
+
+\bibitem[{\citenamefont{Slowikowski}(2021)}]{ggrepel}
+\bibinfo{author}{\bibnamefont{Slowikowski}, \bibfnamefont{Kamil}}.
+  \bibinfo{year}{2021}.
+\newblock \emph{\bibinfo{title}{ggrepel: Automatically position non-overlapping
+  text labels with 'ggplot2'}}.
+\newblock \bibinfo{note}{R package version 0.9.1}.
+
+\bibitem[{\citenamefont{Stepner}(2013)}]{stepner2013binscatter}
+\bibinfo{author}{\bibnamefont{Stepner}, \bibfnamefont{Michael}}.
+  \bibinfo{year}{2013}.
+\newblock \bibinfo{title}{Binscatter: Stata module to generate binned
+  scatterplots}.
+
+\bibitem[{\citenamefont{Sun}(2020)}]{sun2020}
+\bibinfo{author}{\bibnamefont{Sun}, \bibfnamefont{Liyang}}.
+  \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{eventstudyinteract: a stata package that implements
+  the interaction weighted estimator for an event study}.
+\newblock \bibinfo{note}{Https://github.com/lsun20/EventStudyInteract}.
+
+\bibitem[{\citenamefont{Taha}(2018)}]{ivprobit}
+\bibinfo{author}{\bibnamefont{Taha}, \bibfnamefont{Zaghdoudi}}.
+  \bibinfo{year}{2018}.
+\newblock \emph{\bibinfo{title}{ivprobit: Instrumental variables probit
+  model}}.
+\newblock \bibinfo{note}{R package version 1.1}.
+
+\bibitem[{\citenamefont{Tibshirani et~al.}(2020)\citenamefont{Tibshirani,
+  Athey, and Wager}}]{grf}
+\bibinfo{author}{\bibnamefont{Tibshirani}, \bibfnamefont{Julie}},
+  \bibinfo{author}{\bibfnamefont{Susan} \bibnamefont{Athey}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{Stefan} \bibnamefont{Wager}}.
+  \bibinfo{year}{2020}.
+\newblock \emph{\bibinfo{title}{grf: Generalized random forests}}.
+\newblock \bibinfo{note}{R package version 1.2.0}.
+
+\bibitem[{\citenamefont{Toomet and Henningsen}(2008)}]{sampleSelection}
+\bibinfo{author}{\bibnamefont{Toomet}, \bibfnamefont{Ott}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{Arne} \bibnamefont{Henningsen}}.
+  \bibinfo{year}{2008}.
+\newblock \bibinfo{title}{Sample selection models in {R}: Package
+  {sampleSelection}}.
+\newblock \emph{\bibinfo{journal}{Journal of Statistical Software}}
+  \bibinfo{volume}{27}(\bibinfo{number}{7}).
+
+\bibitem[{\citenamefont{Urbanek and Horner}(2020)}]{Cairo}
+\bibinfo{author}{\bibnamefont{Urbanek}, \bibfnamefont{Simon}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{Jeffrey}
+  \bibnamefont{Horner}}. \bibinfo{year}{2020}.
+\newblock \emph{\bibinfo{title}{Cairo: R graphics device using cairo graphics
+  library for creating high-quality bitmap (png, jpeg, tiff), vector (pdf, svg,
+  postscript) and display (x11 and win32) output}}.
+\newblock \bibinfo{note}{R package version 1.5-12.2}.
+
+\bibitem[{\citenamefont{Waskom}(2021)}]{waskom2021seaborn}
+\bibinfo{author}{\bibnamefont{Waskom}, \bibfnamefont{Michael~L}}.
+  \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{Seaborn: statistical data visualization}.
+\newblock \emph{\bibinfo{journal}{Journal of Open Source Software}}
+  \bibinfo{volume}{6}(\bibinfo{number}{60}):\penalty0 \bibinfo{pages}{3021}.
+
+\bibitem[{\citenamefont{Wickham et~al.}(2019)\citenamefont{Wickham, Averick,
+  Bryan, Chang, McGowan, François, Grolemund, Hayes, Henry, Hester, Kuhn,
+  Pedersen, Miller, Bache, Müller, Ooms, Robinson, Seidel, Spinu, Takahashi,
+  Vaughan, Wilke, Woo, and Yutani}}]{tidyverse}
+\bibinfo{author}{\bibnamefont{Wickham}, \bibfnamefont{Hadley}},
+  \bibinfo{author}{\bibfnamefont{Mara} \bibnamefont{Averick}},
+  \bibinfo{author}{\bibfnamefont{Jennifer} \bibnamefont{Bryan}},
+  \bibinfo{author}{\bibfnamefont{Winston} \bibnamefont{Chang}},
+  \bibinfo{author}{\bibfnamefont{Lucy~D'Agostino} \bibnamefont{McGowan}},
+  \bibinfo{author}{\bibfnamefont{Romain} \bibnamefont{François}},
+  \bibinfo{author}{\bibfnamefont{Garrett} \bibnamefont{Grolemund}},
+  \bibinfo{author}{\bibfnamefont{Alex} \bibnamefont{Hayes}},
+  \bibinfo{author}{\bibfnamefont{Lionel} \bibnamefont{Henry}},
+  \bibinfo{author}{\bibfnamefont{Jim} \bibnamefont{Hester}},
+  \bibinfo{author}{\bibfnamefont{Max} \bibnamefont{Kuhn}},
+  \bibinfo{author}{\bibfnamefont{Thomas~Lin} \bibnamefont{Pedersen}},
+  \bibinfo{author}{\bibfnamefont{Evan} \bibnamefont{Miller}},
+  \bibinfo{author}{\bibfnamefont{Stephan~Milton} \bibnamefont{Bache}},
+  \bibinfo{author}{\bibfnamefont{Kirill} \bibnamefont{Müller}},
+  \bibinfo{author}{\bibfnamefont{Jeroen} \bibnamefont{Ooms}},
+  \bibinfo{author}{\bibfnamefont{David} \bibnamefont{Robinson}},
+  \bibinfo{author}{\bibfnamefont{Dana~Paige} \bibnamefont{Seidel}},
+  \bibinfo{author}{\bibfnamefont{Vitalie} \bibnamefont{Spinu}},
+  \bibinfo{author}{\bibfnamefont{Kohske} \bibnamefont{Takahashi}},
+  \bibinfo{author}{\bibfnamefont{Davis} \bibnamefont{Vaughan}},
+  \bibinfo{author}{\bibfnamefont{Claus} \bibnamefont{Wilke}},
+  \bibinfo{author}{\bibfnamefont{Kara} \bibnamefont{Woo}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{Hiroaki} \bibnamefont{Yutani}}.
+  \bibinfo{year}{2019}.
+\newblock \bibinfo{title}{Welcome to the {tidyverse}}.
+\newblock \emph{\bibinfo{journal}{Journal of Open Source Software}}
+  \bibinfo{volume}{4}(\bibinfo{number}{43}):\penalty0 \bibinfo{pages}{1686}.
+
+\bibitem[{\citenamefont{Wickham and Miller}(2020)}]{haven}
+\bibinfo{author}{\bibnamefont{Wickham}, \bibfnamefont{Hadley}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{Evan} \bibnamefont{Miller}}.
+  \bibinfo{year}{2020}.
+\newblock \emph{\bibinfo{title}{haven: Import and export 'spss', 'stata' and
+  'sas' files}}.
+\newblock \bibinfo{note}{R package version 2.3.1}.
+
+\bibitem[{\citenamefont{Wilke}(2020)}]{cowplot}
+\bibinfo{author}{\bibnamefont{Wilke}, \bibfnamefont{Claus~O.}}
+  \bibinfo{year}{2020}.
+\newblock \emph{\bibinfo{title}{cowplot: Streamlined plot theme and plot
+  annotations for 'ggplot2'}}.
+\newblock \bibinfo{note}{R package version 1.1.1}.
+
+\bibitem[{\citenamefont{Wong}(2014)}]{causalinference}
+\bibinfo{author}{\bibnamefont{Wong}, \bibfnamefont{Laurence}}.
+  \bibinfo{year}{2014}.
+\newblock \bibinfo{title}{Causalinference: Various statistical and econometric
+  methods used in causal inference}.
+
+\bibitem[{\citenamefont{Wuertz et~al.}(2020)\citenamefont{Wuertz, Setz,
+  Chalabi, Boudt, Chausse, and Miklovac}}]{fGarch}
+\bibinfo{author}{\bibnamefont{Wuertz}, \bibfnamefont{Diethelm}},
+  \bibinfo{author}{\bibfnamefont{Tobias} \bibnamefont{Setz}},
+  \bibinfo{author}{\bibfnamefont{Yohan} \bibnamefont{Chalabi}},
+  \bibinfo{author}{\bibfnamefont{Chris} \bibnamefont{Boudt}},
+  \bibinfo{author}{\bibfnamefont{Pierre} \bibnamefont{Chausse}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{Michal}
+  \bibnamefont{Miklovac}}. \bibinfo{year}{2020}.
+\newblock \emph{\bibinfo{title}{fgarch: Rmetrics - autoregressive conditional
+  heteroskedastic modelling}}.
+\newblock \bibinfo{note}{R package version 3042.83.2}.
+
+\bibitem[{\citenamefont{Xu and Liu}(2018)}]{gsynth}
+\bibinfo{author}{\bibnamefont{Xu}, \bibfnamefont{Yiqing}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{Licheng} \bibnamefont{Liu}}.
+  \bibinfo{year}{2018}.
+\newblock \emph{\bibinfo{title}{gsynth: Generalized synthetic control method}}.
+\newblock \bibinfo{note}{R package version 1.0.9}.
+
+\bibitem[{\citenamefont{Yutani}(2020)}]{gghighlight}
+\bibinfo{author}{\bibnamefont{Yutani}, \bibfnamefont{Hiroaki}}.
+  \bibinfo{year}{2020}.
+\newblock \emph{\bibinfo{title}{gghighlight: Highlight lines and points in
+  'ggplot2'}}.
+\newblock \bibinfo{note}{R package version 0.3.1}.
+
+\bibitem[{\citenamefont{Zeileis}(2004)}]{sandwich2}
+\bibinfo{author}{\bibnamefont{Zeileis}, \bibfnamefont{Achim}}.
+  \bibinfo{year}{2004}.
+\newblock \bibinfo{title}{Econometric computing with {HC} and {HAC} covariance
+  matrix estimators}.
+\newblock \emph{\bibinfo{journal}{Journal of Statistical Software}}
+  \bibinfo{volume}{11}(\bibinfo{number}{10}):\penalty0 \bibinfo{pages}{1--17}.
+
+\bibitem[{\citenamefont{Zeileis et~al.}(2020)\citenamefont{Zeileis, K\"oll, and
+  Graham}}]{sandwich1}
+\bibinfo{author}{\bibnamefont{Zeileis}, \bibfnamefont{Achim}},
+  \bibinfo{author}{\bibfnamefont{Susanne} \bibnamefont{K\"oll}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{Nathaniel}
+  \bibnamefont{Graham}}. \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{Various versatile variances: An object-oriented
+  implementation of clustered covariances in {R}}.
+\newblock \emph{\bibinfo{journal}{Journal of Statistical Software}}
+  \bibinfo{volume}{95}(\bibinfo{number}{1}):\penalty0 \bibinfo{pages}{1--36}.
+
+\end{thebibliography}

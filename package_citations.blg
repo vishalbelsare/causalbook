@@ -1,0 +1,69 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: package_citations.aux
+Reallocating 'name_of_file' (item size: 1) to 18 items.
+Reallocating 'name_of_file' (item size: 1) to 8 items.
+The style file: mcbride.bst
+Database file #1: package_citations.bib
+Reallocating 'wiz_functions' (item size: 4) to 6000 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Warning--empty journal in abadie2020synth
+Warning--empty year in modelsummary
+Warning--there's a number but no volume in fixest
+Warning--empty journal in bravo2022honestdid
+Warning--empty journal in cattaneo2020rdmulti
+Warning--empty journal in chiapello2018balancetable
+Warning--empty journal in correia2018ivreghdfe
+Warning--empty journal in finlay2014weakiv10
+Warning--empty journal in gangl2004rbounds
+Warning--empty year in vtable
+Warning--empty journal in jann2019estout
+Warning--empty journal in kaspereit2020eventstudy2
+Warning--empty journal in leuven2018psmatch2
+Warning--empty journal in litwok2020rmhbounds
+Warning--empty journal in mander2014lars
+Warning--empty year in oprescueconml
+Warning--empty journal in oprescueconml
+Warning--empty journal in stepner2013binscatter
+You've used 107 entries,
+            3317 wiz_defined-function locations,
+            1148 strings with 20366 characters,
+and the built_in function-call counts, 68532 in all, are:
+= -- 4606
+> -- 2777
+< -- 243
++ -- 951
+- -- 834
+* -- 8839
+:= -- 9374
+add.period$ -- 406
+call.type$ -- 107
+change.case$ -- 971
+chr.to.int$ -- 106
+cite$ -- 125
+duplicate$ -- 5582
+empty$ -- 5151
+format.name$ -- 1570
+if$ -- 12455
+int.to.chr$ -- 5
+int.to.str$ -- 1
+missing$ -- 855
+newline$ -- 527
+num.names$ -- 428
+pop$ -- 1214
+preamble$ -- 1
+purify$ -- 703
+quote$ -- 0
+skip$ -- 1588
+stack$ -- 0
+substring$ -- 1789
+swap$ -- 4522
+text.length$ -- 170
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 957
+warning$ -- 18
+while$ -- 371
+width$ -- 0
+write$ -- 1286
+(There were 18 warnings)
