@@ -1,0 +1,832 @@
+---
+title: "Introduction to Working with Data: Stata Version"
+author: "Nick Huntington-Klein"
+format: 
+  html:
+    self-contained: true
+editor: visual
+toc: true
+theme: minty
+execute:
+  message: false
+  warning: false
+---
+
+This page will serve as an entry-level introduction to how to code with data. If you are starting out for the first time using code and programming to work with data (as opposed to point-and-click statistics software like SPSS, or spreadsheet software like Excel) then this will get you up to the point where you can load data and make some basic changes.
+
+This is companion material to my textbook on causal inference, [The Effect](https://theeffectbook.net). I will focus on the methods and tools used in the book. There's plenty this page doesn't cover. The focus is just the basics! Please check out the [book website](https://theeffectbook.net) or [my main website](https://nickchk.com) for more resources.
+
+This page uses the Stata programming language. The page is also available for [R](https://nickchk.com/Coding%20and%20Data%20Cleaning%20Intro%20R.html) and [Python](https://nickchk.com/Coding%20and%20Data%20Cleaning%20Intro%20Python.html).
+
+# Getting Started
+
+## What We're Learning (and not learning)
+
+This page will teach you how to:
+
+-   Get started with running code
+
+-   Install and load libraries
+
+-   Load in data from files, the internet, or libraries
+
+-   Write good code and responsibly use AI in your coding
+
+-   Look at your data and get basic statistical results from your data
+
+-   Manipulate your data and get it ready for the kinds of analyses you do in [The Effect](https://theeffectbook.net)
+
+By the time we're done, you should be where you need to be to take a data set that is already reasonably usable and prepare it for analysis for a research project. We won't be getting super deep into the weeds - I will not be covering, for example, how to clean extremely messy or unstructured data. I am also not trying to make you an expert coder. Just the stuff to get you to where you can use the book and start on your own research project.
+
+Further, I will be using the same tools and packages that are used in The Effect, and will be focusing on the kind of tools and procedures used in the book. That means I will be focusing on data sets that are small enough to be opened up on your computer (i.e. "in memory") rather than interacting with huge databases.
+
+## The Very Start
+
+You will need to start by getting Stata itself running. I can't help you much with that, but whoever is paying for your copy of Stata should have some instructions for you on
+
+Once you've installed Stata and opened it up, you can check whether everything is working properly by going to the "Command Window" in the bottom part of the Stata screen, putting in `display 2+2`, and hitting enter. You should get back a 4.
+
+## Running a Script, and Very Basic Code
+
+In Stata, you can run code by putting it in the Command Window (bottom-left) and hitting Enter. Try it by putting `display 2+2` in the Console and hitting enter. You should get a 4 in the Results Window.
+
+Most of the time, however, you'll want to keep track of your code so you can rerun it later. So you'll be writing Do files. You can make a new one using the New Do-File Editor button at the top (looks like a pad of paper and a pencil).
+
+Let's write one. Copy the following into the new script you just made:
+
+```{stata}
+#| eval: false
+display 2+2
+set obs 10
+g a = 1
+mean a
+help mean
+```
+
+Select on the line of text with the `display 2+2`.[^1] Then, hit the Execute Selection (do) button (looks like a piece of paper with a Play button on it). This will run the line of code in your mian Stata window. You should see an answer of 4 pop up in your results.
+
+[^1]: Or select a chunk of code to run more than one line.
+
+Next you can run `set obs 10` by selecting that line and hitting Execute Selection. This line of code sets the number of observations in your (currently blank) data set to 10. In your Stata window in the bottom-right you'll see the Properties window, which shows you information about your data. You can see now that it has 10 observations.
+
+Next, execute your `g a = 1`. The `g` is short for "generate". Stata allows these sorts of command shorthands for the most-common commands. The actual command here is `generate` but we can just write `g`. This line will create a new variable called `a` and set all values of that variable to 1. If you look in the top-right of Stata, you'll see your Variables panel, which contains an `a` variable, showing that you've got that variable in your memory.
+
+Next we have `mean a`. This will calculate the mean of the `a` variable for you, which of course is 1 with a standard deviation of 0.
+
+How did we know how to take a mean? You can read a function's help file using the `help` command. Run the `help mean` line. You'll see the list of arguments (options) you can set. From this page we learn that the `mean` command takes a list of variables `varlist` that you can take the mean of (for us this was `x`), and other options like whether we want to standardize the mean with `stdize` or change the standard error calculation with `vce()`.
+
+At the bottom of the help file if you scroll down, you'll see some example code for using the command. This is often handy since you can copy/paste the working code and then edit it for your case.
+
+Now, go back to your Do File Editor and use File -\> Save (or the Save icon) to save your script somewhere on your computer.
+
+## Downloading and Using Packages
+
+Stata has a lot of user-written libraries (packages) containing useful functions for making graphs, doing different kinds of estimates, and so on. These are maintained on a central repository called ssc.
+
+You can install packages from ssc using the `ssc install` function.
+
+In The Effect (and on this page), we make heavy use of the **causaldata** package, so let's install that now. Run the code:
+
+```{stata}
+#| eval: False
+ssc install causaldata
+```
+
+Once you've installed the package, **you don't need to install it again**, it's already on your computer.
+
+You can often get a walkthrough of how to use a package in its help file. There will almost always be a help file by the name of the package itself. Try running `help causaldata` to see the help file for the package's main command. Often there is example code, too.
+
+# Loading Data
+
+## Getting Data from Packages
+
+Some Stata packages (as well as base Stata itself) come with data sets that you can load in directly, for example `sysuse` for base Stata sets, or `bcuse` for some others. You're unlikely to do your own research on these data sets as they're typically just for demonstrations and to play around with. But The Effect makes use of the data sets in the **causaldata** package I wrote, so you'll certainly get used to loading data from it! The example code on this page, as well as the example code in the book, will use the `texas` data from the **causaldata** package (the `texas` data is included in the package because it appears in Scott Cunningham's [Causal Inference: the Mixtape](https://mixtape.scunning.com/)).
+
+So, first, install **causaldata** by running `ssc install causaldata` if you haven't already. Then, load the package and the `texas` data with the following code:
+
+```{stata}
+#| eval: false
+causaldata texas, use clear
+```
+
+Easy! If you haven't already downloaded the **causaldata** data sets it will ask you before downloading them, so type "y" to get them all. Type `causaldata texas` for more information about the data (this only works for `causaldata`, not other packages). Also see the Variables pane in the top-right, which contains variable names and descriptions for all the variables in the data set.
+
+## Loading Data from a File
+
+Often your data will be stored in a file that you will need to load in. Examples of these kinds of files include:
+
+-   Excel spreadsheets (.xlsx files)
+
+-   Comma-separated or tab-separated values files (.csv and .tsv), which are like Excel spreadsheets but simpler and more universal
+
+-   Special compressed data files like Stata datasets (.dta) or Parquet files (.parquet), which cater to the needs of data analysts
+
+There are a lot of functions designed to read these files in. You can tell the function where the file is, for example giving it a URL if the file is on the internet, and it will load it in for you.
+
+While `use` is a command that works great for reading in Stata .dta files, the `import` command is there for loading in other kinds of common data types. For example we can use `import delimited` to get CSV files.
+
+```{stata}
+#| eval: false
+import delimited https://vincentarelbundock.github.io/Rdatasets/csv/causaldata/texas.csv, clear
+```
+
+The `texas` data is stored at that URL. The `clear` option is important here (as well as with `use`, since it tells Stata "yes, I actually DO want you to throw my current data set away so you can load this new one." Otherwise it won't work if you have any unsaved changes in your current data.
+
+After running this code you'll see the `texas` data loaded in your Variables tab on the top-right (but without the variable labels! CSVs don't contain those).
+
+The data doesn't *have* to be stored on the internet. You can also load a file from your computer. However, this will require that you know how to use your computer's file system... see the next section.
+
+## Files on Your Computer
+
+`import` and `use` and similar functions don't just work with data from the internet. They also work with files loaded on your computer. You can give the `import` function a *filepath* that points to a place on your computer, instead of a URL that points to a place on the internet.
+
+If you, [like most people](https://www.statista.com/statistics/272365/age-distribution-of-internet-users-worldwide/), didn't start using a computer to do work until after Google Drive launched in 2012 (and was followed by other cloud storage services like Dropbox and OneDrive soon after), you might not be very familiar with the proper way to store and retrieve files from your computer. Those services encourage you to store files in a way that makes using your file system difficult. This is fine for 99% of people, but not great if you want to write code that accesses files.
+
+**As someone writing code, you really want to USE your file system.** Modern computer use for casual users tries to push you into just putting all your files in a single "Downloads" folder and using a search bar to find things rather than keeping things organized. This will quickly turn into a major headache if you're using your computer heavily, and especially if you're writing code that accesses files. If you have a project, make a folder for the project and keep all the files for that project in it. Maybe even make different subfolders to store data, code, writing, and so on!
+
+Files on your computer are stored in a series of *nested folders*. On my computer, for instance, I have a file called `test_data.csv` stored in my Documents folder. If I'm clicking around then I'd just go to "Documents" and search for it. But really, that Documents folder is inside of my "Nick" folder, which is inside of my "Users" folder, which is in my "C:" drive (standard on Windows).
+
+Now that we have things in folders, how can we load data from files? If I just tried to run `import delimited test_data.csv` the code would have no idea that the file is inside of my Documents folder and would give me an error. I need to tell the computer *where to look to find the file*. That's the filepath.
+
+There are two approaches to filepaths. One is to use an **absolute filepath**. An absolute filepath tells the computer exactly where to look, starting from the topmost folder and working its way down. In this case that would be:
+
+```{stata}
+#| eval: false
+import delimited C:/Users/Nick/Documents/test_data.csv
+```
+
+The `/` forward slashes indicate that we're going into a subfolder. So this starts in C: and then goes to the Users folder, then the Nick folder inside of that, then Documents inside of that, and finally the test_data.csv file.[^2]
+
+[^2]: Note that Windows computers, unlike Mac or Linux, typically use backslashes (\\) instead of forward slashes to go into a subfolder. On a Windows computer, Stata will accept either.
+
+This will work. However, it's a **bad idea**. Why? For one, if you give someone else your code, it won't run any more. Unlike URLs, which point to a place on the internet everyone can see, a filepath points to a location **on your computer** that other people can't access. **Sending someone a filepath to a file on your computer does not send them the file.**
+
+Instead, you should use **relative filepaths**. Instead of starting from the topmost folder, relative filepaths start from a *working directory*. You can set your working directory, and then use the filepath from there. For example, if my working directory were the Nick folder, then I could do `import delimited Documents/test_data.csv` and it would know where to find the file. Or if my working directory were the Documents folder, I could simply do `import delimited test_data.csv`. Then, I could send someone my code and the `test_data.csv` file, and if they set their own working directory properly, they can run my code just fine.
+
+The easiest way to do this is to ensure that your Do file and data are stored in the same folder. Then, if you launch Stata by double-clicking on your Do file, the working directory will automatically be set to that folder. Then you can just do `import delimited test_data.csv`. Easy! Alternately, you can change your working directory manually with File -\> Change Working Directory, or the `cd` command.
+
+One step more difficult, but better practice, is to make a `data` subfolder for your data. Then you can set the working directory to the folder the code is in and do `import delimited data/test_data.csv`. Even *better* is to have a main project folder with a `data` subfolder and also a `code` subfolder. Put the code in the code folder and the data in the data folder. Then use `..` to "hop up" a folder. `import delimited ../data/test_data.csv` will start in your code folder, go up one level to the project folder with `../`, then go into the data folder, and finally find your file. Send someone your whole project folder (or have it on a shared cloud-storage folder like a OneDrive your research team can all access) and everything will run smoothly!
+
+# Looking at Data
+
+An important part of working with data is **looking at it**. That includes looking directly at the data itself, as well as looking at graphs and summary statistics of the data.
+
+When you look at data, what are you looking *for*? There are a few things:
+
+-   What is the distribution of the data?
+
+    -   What values can it take?
+
+    -   How often does it take certain values?
+
+    -   If it's numeric, what is its average?
+
+-   Is there anything fishy?
+
+    -   What *should* this variable look like? Does it look like that?
+
+    -   Are there any values in the variable that don't make sense?
+
+    -   Are there any missing values in the variable?
+
+-   How are the variables related?
+
+    -   How does the distribution of one variable change with another?
+
+The kinds of variables there are and the task of calculating summary statistics and the relationships between variables is a huge subject. So instead of cramming it all in here I'll point out that these are covered in Chapters [3](https://theeffectbook.net/ch-DescribingVariables.html) and [4](https://theeffectbook.net/ch-DescribingRelationships.html) of the book, including with code examples in Chapter 4. I'll add just a few additional notes here:
+
+1.  You can look directly at your data, as if it were an Excel spreadsheet, by clicking on the Data Editor or Data Browser at the top of your Stata window (careful with the Editor - it will allow you to change the contents of your data), or doing `browse`.
+2.  To look at summary statistics for a specific variable, you can use the `summarize` command (or `summ` or `su` for short) For example, `summ perc1519` returns a range of summary statistics for the `perc1519` variable. You can get more detailed with `summ perc1519, d` or get summary statistics for everything at once with `summ *`.
+3.  Many summary statistics functions will automatically drop any data that is missing before it calculates your statistics. This isn't the only (or even necessarily best) way to handle missing values, but it is definitely the most common. See [Chapter 23](https://theeffectbook.net/ch-UndertheRug.html#why-it-had-to-go-i-dont-know-missing-data) for more.
+4.  For categorical or discrete variables, a good way to see how often each value is taken is `tabulate` (or `tab` for short) So `tab year` will show us how many observations there are for each year.
+
+# The Goal of Manipulating Data
+
+## What You're Trying to Do
+
+Your goals in preparing your data are the following:
+
+1.  Take your raw data and put it in the form you need it for your analysis
+    -   Selecting the right subsample (if any)
+    -   Creating any variables you might need that aren't in there
+    -   Merging with other data sets
+2.  Checking if anything looks wrong
+    -   Does anything in the raw data look like an error?
+    -   Have you made any errors in your code?
+
+Often, you will want to make sure your data is in **tidy data** format.
+
+What is tidy data? Let's take as an example a data set of the heights and weights of 30 different children in a classroom. We've taken one set of measurements per child, so the **observation level** is one child. Two of the children in this classroom are Maria and Tom.
+
+In a tidy data set,
+
+-   **Each observation is one row of data** *(meaning: There are 30 children in the data, so the data set has 30 rows. Maria is one row of the data, and her height and weight are both on that row. We don't have one row for Maria's height and another row for her weight. We don't have Maria's height and Tom's height on the same row.)*
+
+-   **Each variable is a column, and each column is a variable** *(meaning: one column of the data is everyone's height. We don't have one column for Maria's height and another column for Tom's height.)*
+
+-   **Each value is a cell, and each cell is a single value** *(meaning: we don't try to stuff multiple values in a single cell. We don't have one column just called "height and weight" and put "50 inches tall and 70 lbs" for Maria. We also don't stuff all the children into one row and put \[50 inches, 46 inches, 52 inches, ...\] in a single cell in the height column).*
+
+Tidy data is helpful because it makes data analysis on lots of observations much easier to perform. Often if you are getting data from sources that tend to only look at one observation at a time (for instance, in a quarterly report for a business where they look at a single sales number, a single costs number, etc.) you tend to get non-tidy data since non-tidy data often makes it easier to find a single data point of interest. Not so good for analysts though! For more information on tidy data, see [this page](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html).
+
+If your data is heavily *non*-tidy and you need to tidy it, a useful tool you'll probably need is the *pivot*, also known in Stata as the `reshape` command. Reshaping data is a huge headache in any language and notoriously is hard to get the syntax right for, and I don't cover it on this page. You can find out more [here](https://www.reed.edu/psychology/stata/gs/tutorials/reshape.html) though!
+
+## Writing (or having AI Write) Acceptable Data Manipulation Code
+
+There are a few things you should keep in mind when writing code to manipulate your data:
+
+-   Add *comments* to your code. In Stata you can do this by starting the line with `*` or `//` (although I recommend sticking with `*` as `//` doesn't work if you copy/paste it into the Stata window directly). These comments will help others figure out what your code is trying to do. It will also help *you* figure out what your code is trying to do when you return to it later.
+
+-   Make sure that *all* of your code is written in a Do file (or multiple Do files). If you write code directly in the Command window, make sure you copy it into your script before moving on. Don't fall prey to the trap of thinking that you'll just remember it later! **It should be possible to start from a fresh brand-new Stata session and run your script from start to finish without error**. As you're working, it's not a terrible idea to occasionally save your work, close Stata down, reopen it, down and run your script line-by-line from the start to make sure you haven't changed something that breaks your code.
+
+-   You need to **look at your data after every line of data manipulation code**. Using the tools from the "Looking at Data" section above, you should be checking what your data looks like after **every line of code**. You just wrote a line of code that tries to do something - make a new variable, fill in a missing value, aggregate the data, etc.. So ask yourself - **did it do that thing? You should probably check.** Especially when you're starting out, your code might not do what you expect! **I have been helping students with data manipulation code for a long long time. If they run into an issue, the great majority of the time it's not some complex technical problem, it's just that they forgot to check their data to ensure the code did what they thought it did**.
+
+With that in mind, how about AI/LLM services like ChatGPT Canvas, Copilot, and others? Can't we just have them write the code?
+
+Well, yeah. Coding assistants are effective and powerful. And realistically, outside of a classroom setting where it might not be allowed, you're probably going to be using them to help write your code the rest of your life.
+
+So... use them now right? Well, maybe. **While AI is excellent at preparing code, it is prone to error**. This is especially true for Stata which is not that popular of a language. LLMs get good by looking at *lots* of examples, and there's simply way less Stata code out there for it to learn from than, say, Python. You simply **can't take it for granted that the code will work**. This is extra-especially true in coding for data manipulation, where the AI is often lacking crucial context necessary to write the correct code. That means that **AI code is only acceptable if you are capable of checking its work**.
+
+That means two things:
+
+1.  Don't have AI write code you couldn't write yourself. **You need to understand how to code before you can use AI to write code.** Otherwise you won't know what the code is doing and can't check whether it's right.
+2.  Don't assume that the AI did it properly. This is also true if you're writing code yourself, but especially if AI is writing code, you **have** to do the above step of going line-by-line and checking whether the code is actually doing what it's supposed to do.
+
+## Running Into Errors
+
+When you code you will almost certainly run into errors.
+
+In Stata there are two kinds of messages you will receive. Often, you'll get a message in regular black text with information about what just happened when you ran your code. This means the code ran just fine, although sometimes the message might give you a hint that it didn't work as expected.
+
+For example, consider the code `g b = "hello"` followed by `destring b, replace`. `destring` is a command that turns text into numbers, for example turning "3" into 3. However, `'hello'` isn't something it can convert into a number, so it will give you the result `b: contains nonnumeric characters; no replace` meaning that it did run your code, but, like... did you know that this doesn't make sense? It didn't actually do anything. Just checking. Maybe you knew this would happen and it's intentional, or maybe it means you have to fix something.
+
+On the other hand, *errors* are what you get when it actually can't run your code and stops. Errors usually show up as red text. For example, consider the code `g b = "hello"` followed by `g b = "goodbye"`. The `b` variable is already created by the first line, and so the second line can't create it again without specifying that you want to replace the variable that's already there. So you get the red-text error `variable b already defined` and an error code `r(110)` and your code will stop running. When you get an error, it's always something you have to fix.
+
+How can you fix things when you run into an error? Errors are often confusingly worded and require some technical understanding to figure out what they're saying. But I have some pointers.
+
+1.  In general, try Googling or asking an AI what the error means. It can often tell you.
+2.  The error message itself is telling you what the problem is. Even if you can't understand it, will usually tell you **which part of the code** the error is coming from. THIS is the part to look for. In the above error message, you might not know what the problem is with being `'already defined'` (and this might be confusing to you if you're coming from another language where this is usually not an issue), but you do know that it's saying the problem is in trying to define `b` when it's already been done. So look at that part of your code - you might be able to figure out yourself what the problem is, even if you can't understand the error message itself.
+
+# How to Manipulate Data
+
+Now we will get into some actual data manipulation code.
+
+## Picking Only Some of Your Data (Subsetting)
+
+If you want to keep only certain *columns* (variables) from your data, you can use the `keep` and `drop` commands.
+
+```{stata}
+#| eval: false
+causaldata texas, use clear
+* Keep the year and state variables
+keep year statefip
+
+* Get rid of the bmprison variable
+causaldata texas, use clear
+drop bmprison
+```
+
+How about picking just some of the *rows* (observations) to keep? The primary way to do this is with `keep` and `drop` again, but this time adding an `if` to them to get `keep if` and `drop if`.
+
+`keep if` wants you to give it a calculation using your data that is either true or false. If it's true, it keeps the row. If it's false, it drops it.
+
+```{stata}
+#| eval: false
+causaldata texas, use clear
+
+* Keep only data from the state of Utah
+* Note that == *checks* whether two things are equal,
+* while = *assigns* the left thing to be the right
+* so state == "Utah" is TRUE whenever the state variable is "Utah""
+* and FALSE otherwise
+keep if state == "Utah"
+
+* Use | to say "or" to chain multiple statements,
+* or & for "and"
+* Keep data that is from Utah OR is from Montana and the year 1994 or later
+* >= means "greater than or equal to"
+causaldata texas, use clear
+keep if state == "Utah" | (state == "Montana" & year >= 1994)
+```
+
+### Now You
+
+1.  Load in the `texas` data.
+2.  Use the Variables pane to see the variable descriptions and find which variable is for the unemployment rate.
+3.  Use any of the the tools from the Looking at Data section to figure out whether the unemployment rate is on a 0-1 or a 0-100 scale.
+4.  Use `drop` to drop the `income` variable. Then use `keep` to keep only the unemployment rate variable, as well as `state` and `year`.
+5.  Use `keep if` to keep only rows that **either** have an unemployment rate above 5% **or** are in the state of Texas.
+6.  Look at your result to make sure it worked as intended (hint: maybe check the unemployment rates for all non-Texas states (`state != "Texas"`) to ensure they're above 5%? Check to make sure all the Texas observations are there?)
+
+::: panel-tabset
+## Setup
+
+``` stata
+causaldata texas, use clear
+```
+
+## Solution
+
+``` stata
+causaldata texas, use clear
+* looks like the unemployment rate variable is ur
+
+summarize ur
+* It goes from 0 to 100, not 0 to 1
+
+* drop to drop income
+drop income
+* keep year, state, and ur
+keep state year ur
+* Keep rows if they have an ur above 5 or are in Texas
+keep if state == "Texas" |  ur > 5
+
+* Check states
+tab state
+* check UR of non-Texas states
+summarize ur if state != "Texas"
+```
+:::
+
+## Creating and Editing Variables
+
+You can create and edit variables using the `generate` (`g` for short) and `replace` commands. `replace` works on already-existing variables and replaces them.
+
+For example:
+
+```{stata}
+#| eval: false
+g just1s = 1
+g just2s = 2
+```
+
+will create two new columns in the data: `just1s`, which is `1` in each row, and `just2s`, which is `2` in each row. We're both naming the variables we add (`just1s`, `just2s`) and setting their values (`1`, `2`) at the same time. If the name we give a column is the same as a name already in the data, we need to use `replace` instead of `generate` or else we'll get an error.
+
+Usually, you're not setting all the values of your new variable to the same thing, as we are here. Typically you're combining your existing variables and doing some calculations on them to make a new column. Let's take our `year` variable and add 1 to it. And while we're at it, let's pretty up our naming with the `rename` command and change our column names to be capitalized (which might look nicer on a graph we make later).
+
+```{stata}
+#| eval: false
+causaldata texas, use clear
+g next_year = year + 1
+rename year Year
+rename next_year Next_Year
+```
+
+#### Now You
+
+1.  Load up the `texas` data.
+2.  Use `generate` to make a new variable called `ur_1scale` by dividing the `ur` variable by 100.
+3.  Then, use `rename` to change the name of `ur` to `unemprate` and `ur_1scale` to `Unemployment_Rate_1_Scale`
+4.  Use `browse` to check that your new variable looks like it's supposed to.
+
+::: panel-tabset
+## Setup
+
+``` stata
+causaldata texas, use clear
+```
+
+## Solution
+
+``` stata
+causaldata texas, use clear
+
+g ur_1scale = ur/100
+rename ur unemprate
+rename ur_1scale Unemployment_Rate_1_Scale
+
+browse  
+* Looks good!
+```
+:::
+
+### Working With Numeric Variables
+
+The easiest kinds of variables to create and edit are numeric variables. Just do a calculation on your existing columns to get your new variable! It will go row by row to do the calculation. Or, if you do some sort of calculation that only gives you back one value, it will apply that single value to all the rows.
+
+From there it's just learning the different functions and operations to do your math, and being careful with parentheses to keep your intended order of operations intact.
+
+For example, the following code multiplies the share of the population in the state that is Black by the share who are 15-19 to get a (rough) share who are both Black and 15-19. Then, it uses `mean` to caluclate the average value of `income`, pulls the result out with `_b[income]` (the `_b` gets at the coefficients produced by the result, see [this page](https://stats.oarc.ucla.edu/stata/faq/how-can-i-access-information-stored-after-i-run-a-command-in-stata-returned-results/) for more info) and uses that with another `g` to calculate the state/year's income relative to the mean:
+
+```{stata}
+#| eval: false
+g black_and_1519 = (black/100)*(perc1519/100)
+
+mean income
+g income_relative_to_mean = income - _b[income]
+```
+
+#### Now You
+
+1.  Load up the `texas` data.
+2.  Use the Variables pane to see the descriptions of all the variables.
+3.  Use `summarize` to calculate summary statistics for alcohol consumption per capita. Then, use `help summarize` and look to the "stored results" segment to find out how to get the minimum value of alcohol consumption per capita.
+4.  Use `g` to create the variable `alcohol_relative`, containing alcohol consumption per capita *divided by* the minimum alcohol consumption per capita across all values.
+5.  Use `g` to create a new variable called `white_share` equal to the number of white men in prison divided by (white men in prison + black men in prison).
+6.  Check the data using tools from Looking at Data to ensure the results look right (how might you do this? Well, one example is that `white_share` should never be below 0 or above 1, and `alcohol_relative` should never be below 1. Are both of those true? How did I come up with those rules?)
+
+::: panel-tabset
+## Setup
+
+``` stata
+causaldata texas, use clear
+```
+
+## Solution
+
+``` stata
+causaldata texas, use clear
+
+summ alcohol
+help summ
+g alcohol_relative = alcohol/r(min)
+
+* Careful with the parentheses to make sure both wmprison
+* and bmprison are in the denominator!
+g white_share = wmprison/(wmprison + bmprison)
+
+* Check the ranges of our variables (there are ways other than vtable to do this)
+summ alcohol_relative white_share 
+* Alcohol's min is 1 and white_share is never negative or above 1. Great!
+```
+:::
+
+### Working With Strings (Text Variables)
+
+It's not uncommon to get data in the form of *character* variables, i.e. text. There's a lot to say on how to work with these variables, but for our purposes we don't need to get too deep into the weeds.
+
+`substr()` takes a substring out of a string based on its position. `substr('hello', 2, 3)` will take the characters of `'hello'` from the 2nd to the 3rd position, and will give you `'el'`.
+
+`strpos()` checks whether a substring is present in a string and tells you what position it finds the match at (any position above 0 means it's somewhere in there!). If you have a variable called `necessities` with the contents `"water", "food", "shelter"`, then `g has_t = strpos(necessities, "t") > 0` will give you back `1, 0, 1` in your new variable since "t" is in "water" and "shelter" but not "food".
+
+Finally, `word()` will give you back a word from a multi-word string, based on its position. `word("Tale of Two Cities",2)` will give you `"of"`.
+
+There's plenty more, but this will be enough to get going and it may be a while before you need anything else. Try `help string functions` to see what else is out there.
+
+#### Now You
+
+1.  Load up the `texas` data.
+2.  Use `keep` to limit the data to the `state` variable, and then do `duplicates drop` to get rid of all duplicates. Now you've got a data set that just lists the 50 state names (plus Washington DC).
+3.  Use `g` to make a new variable called `first_letter`, using `substr()` to get the first letter of every state (the `state` variable name should be the first argument of `substr()`).
+4.  Use `g` to make a new variable called `is_virginia`, using `strpos()` to make the variable `1` for every state that contains the string "Virginia"
+5.  Use `g` to create a new variable called `new_state`, using `word()` to get the first word of the state's name, and then using `==` to check if that first word is "New".
+6.  Check the data using `browse` to make sure everything worked properly.
+
+::: panel-tabset
+## Setup
+
+``` stata
+causaldata texas, use clear
+```
+
+## Solution
+
+``` stata
+causaldata texas, use clear
+
+keep state
+duplicates drop
+
+g first_letter = substr(state, 1, 1)
+* We want the first letter
+* check for 'Virginia'
+g is_virginia = strpos(state, "Virginia") > 0
+* Get the first word out, then see if it's 'New'
+g new_state = word(state, 1) == "New"
+
+* Check our work. Looks good!
+browse
+```
+:::
+
+### Working With Dates
+
+Dates are the worst. Everyone who works with data hates them. They're inconsistent (different number of days in the month, days in the year (leap years), time zones are wild, many different date formats with different levels of precision, etc. etc.).
+
+At our basic level, there are only a few things we need to worry about with dates. The first is converting non-date data, like a string that reads '1999-02-09' into a proper date that Stata recognizes. The second is pulling date information back out of that date variable (like getting that the year of that date is 1999). The third is "flattening" dates, for example getting that the first day in that month's date is February 1, 1999, which can be handy when aggregating date-based information.
+
+We can convert date data into a proper date format using the `date()` function, which takes a date and a format. Just pick the function that accords with the format of your data. Do you have data that looks like "1999-02-18", i.e. year-month-day? use `date("1999-02-18","YMD")` to make it a date (specifically, the number 14293 which corresponds to that day in Stata's dating system). How about just the year and month, like "1999-02"? Use `"YM"` since it's year-month in that order.
+
+Once we have a proper date, we can use `year()`, `month()`, `day()`, `week()`, and so on to pull out information from the date. For example `month(date("1992-03-08","YMD"))` will give back 3 (since March is the 3rd month).
+
+Finally, we can flatten dates with some mathematics. Since it's just a number, we can subtract the day of the month and add 1 to get the first day of the month. `datevar - day(datevar) + 1` will get the date at the start of the month that `mydate` is in for example turning March 8, 1992 to March 1, 1992.
+
+#### Now You
+
+1.  Load up the `texas` data.
+2.  Use `tostring` with the `generate()` option to turn the `year` variable into a string, storing that variable as `year_string`.
+3.  Use `g` to create the variable `date_feb_12_str` by adding "02-12-" to `year_string` with `+`.
+4.  Use `g` with `date()` to turn `date_feb_12_str` into a proper date variable called `date_feb_12`.
+5.  Use `g` and arithmetic with the `date_feb_12` variable to make `date_feb_1` out of `date_feb_12`. `date_feb_1` is February 1 of the year, i.e. the first day of that month.
+6.  Use `g` and `year()` to create `new_year`, taking the year of `date_feb_1`.
+7.  Use `assert new_year == year` to check that they are always the same (if they are, you'll get back no output. If they're not you'll get an error).
+
+::: panel-tabset
+## Setup
+
+``` stata
+causaldata texas, use clear
+```
+
+## Solution
+
+``` stata
+causaldata texas, use clear
+
+* Turn year to a string
+tostring year, g(year_string)
+
+* paste together
+g date_feb_12_str = "02-12-"+year_string
+* It's month, day, year, so use "MDY"
+g date_feb_12 = date(date_feb_12_str, "MDY")
+* Arithmetic to go back to the first day of the month
+g date_feb_1 = date_feb_12-day(date_feb_12)+1
+
+* get the year out
+g new_year = year(date_feb_1)
+  
+* Check that they're always the same
+assert new_year == year
+```
+:::
+
+## Aggregating Data
+
+A data set's **observation level** is whatever is represented by a single row of data. If you have a data set of 30 students in a classroom, and you have one measurement per student and thus one row of data per student, then the observation level is "one student". If you follow those same students over many years and have one row of data per student per year, then the observation level is "student-year".
+
+Often you might have data at a more fine-grained observation level and want to broaden it. Perhaps you have that student-year data but want to do an analysis of students overall. To do this you can **aggregate** the data.
+
+This can be done with `collapse` to aggregate multiple rows into one. The result will be a data set at the **observation level** of whatever you put in the `by()` argument of `collapse`.
+
+```{stata}
+#| eval: false
+causaldata texas, use replace
+
+* the original texas data has a state-year observation level
+
+* Get the alcohol consumption by state,
+* averaged over all the years
+collapse (mean) alcohol, by(state)
+```
+
+Importantly, you **have to actually tell it how to summarize the data**. That `(mean)` there tells it to calculate the mean of `alcohol`. It's got multiple rows of `alcohol` data per state. Does it take the mean? The median? The first observation? What? So nothing will happen. You have to tell it to take the `mean` or the `sum` or whatever it is you want.
+
+#### Now You
+
+1.  Load up the `texas` data.
+2.  Use `collapse()` to calculate the means of `income` and the sum of `bmprison` by values of `state`.
+3.  Look at the data with `browse` to ensure it worked properly.
+
+::: panel-tabset
+## Setup
+
+``` stata
+causaldata texas, use clear
+```
+
+## Solution
+
+``` stata
+causaldata texas, use clear
+
+collapse (mean) income (sum) bmprison, by(state)
+
+browse
+```
+:::
+
+## Multi-Row Calculations
+
+It's not uncommon to need to use *multiple* (but not *all*) rows of data to calculate something you're interested in. Some ways this might occur include:
+
+-   Calculating a statistic by group (for instance, calculating the mean of something separately for group A, then again for group B, and so on)
+
+-   Calculating something like a growth rate where you want to know the value of something relative to the period just before, or the first period in the data
+
+To calculate statistics by group, we can use the extended-generate command `egen` instead of just `g`. `egen` lets you do all sorts of group-level calculations; see `help egen`. We lead things off with the `bysort` prefix which allows us to do calculations separately for each group.
+
+One common application of `egen()` is to calculate variables that are de-meaned or standardized, where you want to subtract the group mean from something, and then (for standardizing) divide by the group standard deviation:
+
+```{stata}
+#| eval: false
+causaldata texas, use clear
+
+* egen to calculate an unemployment rate mean and standard deviation
+* we need the sort option for it to do group-level calculations
+bysort state: egen mean_ur = mean(ur)
+bysort state: egen sd_ur = sd(ur)
+
+g standardized_ur = (ur - mean_ur)/sd_ur
+```
+
+For growth rates, you'll need to keep track of the order of the data. `sort` lets you sort the data set by whatever variables you give it, presumably time order. Then, with regular-ol `g`, you can follow a variable name with `[_n-1]` to refer to an observation one row above (or any number of rows if you do some other number instead of `1`), or `[1]` or `[_N]` let you refer to the first or last row in the group, respectively. Perhaps oddly, if you want a *cumulative* sum, i.e. adidng up all the values up to a point, we can just use `sum()` but with `g` instead of `egen`. You can also do all this while dropping the `group_by()` stuff if your data is just a single time series without groups.
+
+Beyond all this, there's also the whole panel-data and time-series data systems where you can declare a time element for your data with `xtset` or `tsset`. Then the `L.` lag operators will go one period backwards in *time* rather than one row upwards in the data set, which is handy when you might have gaps in your data. We won't go into that here, though.
+
+```{stata}
+#| eval: false
+causaldata texas, use clear
+
+* we want growth from year to year so set it in year order
+sort state year
+* lag will take data one row above
+bysort state: g prison_growth = (bmprison/bmprison[_n-1]) - 1
+* although we can take longer lags if we like (handy if the data is, say, monthly)
+bysort state: g prison_growth_10yrs = bmprison/bmprison[_n-10] - 1
+* perhaps we want growth since the start
+bysort state: g prison_index = bmprison/bmprison[1]
+
+* let's look at one state's results
+browse year bmprison prison_growth prison_growth_10yrs prison_index if state == "Texas"
+```
+
+#### Now You
+
+1.  From the **causaldata** package load the `castle` data set (not `texas`!). See the Variables panel to see the descriptions of all variables
+2.  Use `bysort` and `egen` to create `avg_robbery` equal to the mean robbery rate each year across all states (careful: what variable goes after `bysort` here?).
+3.  Now `sort` the data by `sid` and year
+4.  Use `bysort` and `g` to create the variable `robbery_yoy` to calculate the percentage growth in robbery rates **by sid** from one year to the next
+5.  Use `bysort` and `g` to create the variable `robbery_index` which is the percentage growth in robbery since the start of the data
+6.  Use `browse` with `if` to look at `sid == 1` and just the variables `year`, `robbery`, and any variables you just created
+
+::: panel-tabset
+## Setup
+
+``` stata
+causaldata castle, use clear
+```
+
+## Solution
+
+``` stata
+causaldata castle, use clear
+
+* calculate average robberies by year
+bysort year: egen avg_robbery = mean(robbery)
+* now put it in order
+sort sid year
+* Get year on year growth
+bysort sid: g robbery_yoy = (robbery/robbery[_n-1]) - 1
+* and growth since the first observation
+bysort sid: g robbery_index = (robbery/robbery[1]) - 1
+  
+* Look at the results
+browse year robbery avg_robbery robbery_yoy robbery_index if sid == 1
+```
+:::
+
+## Merging Multiple Data Sets
+
+Often you will have multiple data sets on the same sets of observations. For example, in a data set of companies you might have one file that contains those companies' marketing spending budgets, and in a different file you might have data on their numbers of employees. Or perhaps you have one data set with the population of a bunch of countries in different years (with one row per country per year) and another data set with the names of the capital cities for each country (one row per country). If you want to analyze these variables together you must first merge (or join) the two data sets.
+
+Merging with the `merge` command works by identifying a set of *key variables* that are shared by both of the data sets. In at least one of the data sets, those key variables should be the **observation level** of the data, meaning that there is no more than one row with the same combination of those key variables. `merge` merges two data sets together: the master data (the one you have open) and the using data (a second data set saved on your computer). A `1:m` merge requires that the key variables are the observation level of the master data, a `m:1` merge requires that they're the observation level of the using data, and a `1:1` merge requires that it's both.[^3]
+
+[^3]: Technically you can merge two data sets where the key variables are not the observation level of either data set, called an `m:m` merge in Stata, or a many-to-many merge. However, it's usually a bad idea and if you're doing it you're almost certainly making a mistake.
+
+For example, consider the following two data sets A and B:
+
+```{r}
+#| echo: false
+library(tidyverse)
+tibble(Person = c('Nadia','Nadia','Ron','Ron'),
+       Year = c(2021, 2022, 2024, 2025),
+       DaysExercised = c(104, 144, 87, 98))
+
+```
+
+```{r}
+#| echo: false
+
+tibble(Person = c('Nadia','Ron', 'Jin'),
+       Birthplace = c('Seville','Paris', 'London'))
+
+```
+
+These data sets share the column "Person". Notice that "Person" is the observation level of data set B - there's only one row for each value of Person, with no duplicates. The observation level of data set A is not Person but Person *and* Year (there's one one row for each unique combination of Person and Year).
+
+If I were to merge these data sets, it would go row by row in data set A. "Hmm, OK, the Person in the first row is Nadia. Let's check for Nadia in B. In B, Nadia is born in Seville, so I can add a Birthplace column in data set A where Nadia is born in Seville." Then on to the second row. "The Person in the second row is Nadia again. So the Birthplace column is Seville again" and so on.
+
+```{r}
+#| echo: false
+
+tibble(Person = c('Nadia','Nadia','Ron','Ron'),
+       Year = c(2021, 2022, 2024, 2025),
+       DaysExercised = c(104, 144, 87, 98),
+       Birthplace = c('Seville','Seville','Paris','Paris'))
+
+```
+
+Now the data is merged and we can do our Birthplace / DaysExercised analysis.
+
+What about Jin? Jin was in data set B but not data set A. We have some options. One option is an "inner join" (`keep(match)`) which keeps only matching observations and drops anyone who didn't match, which is what we did above. Another is a "full join" (no `keep` option) which keeps any non-matching observations and just puts missing values wherever we don't have info, like this:
+
+```{r}
+#| echo: false
+tibble(Person = c('Nadia','Nadia','Ron','Ron', 'Jin'),
+       Year = c(2021, 2022, 2024, 2025,NA_real_),
+       DaysExercised = c(104, 144, 87, 98,NA_real_),
+       Birthplace = c('Seville','Seville','Paris','Paris','London'))
+
+```
+
+We can also choose whether or not to keep the non-matching observation based on which data set it's in. In merging, there is a "left" data set (the first one we merge) and a "right" data set (the second). For us, the left data set is A and the right data set is B. We can do a "left join" (`keep(master match)`), which means "if an observation is in A but not B, keep it. If it's in B but not A, drop it." Similarly there's the "right join" (`keep(master using)`) which keeps observations in B but not A, but drops those in A but not B. For us, Jin would stick around with a right join but be dropped with a left join, since he's in the right data set but not the left one.
+
+```{stata}
+#| eval: false
+* open up the person-year data we showed above
+use person_year_data.dta, clear
+
+* merge with the person-level data we also showed above
+* doing a right join
+merge m:1 Person using person_data.dta, keep(match using)
+```
+
+```{r}
+#| echo: false
+person_year_data <- data.frame(Person = c('Nadia','Nadia','Ron','Ron'),
+       Year = c(2021, 2022, 2024, 2025),
+       DaysExercised = c(104, 144, 87, 98))
+person_data <- data.frame(Person = c('Nadia','Ron', 'Jin'),
+       Birthplace = c('Seville','Paris', 'London'))
+
+merged_data <- person_year_data %>%
+  right_join(person_data, by = 'Person')
+
+merged_data
+```
+
+You'll also notice that when you merge, Stata creates a `_merge` variable indicating the kind of match the row had - whether it was a successful match (`_merge == 3`), just from the master data (`_merge == 1`) or just from the using (`_merge == 2`).
+
+#### Now You
+
+1.  Run the below code to load in the two example data sets
+2.  Merge `data1` with `data2`, keeping both departments
+3.  Use `browse` to look at the result
+
+::: panel-tabset
+## Setup
+
+``` stata
+clear
+
+set obs 1
+g Department = "Sales"
+g Director = "Lavy"
+save department_level_data.dta, replace
+
+clear
+* Input the data using the input byte approach
+input byte Month byte Sales str5 Department
+
+    1 6 "Sales"
+    1 8 "R&D"
+    2 1 "Sales"
+    2 2 "R&D"
+    3 4 "Sales"
+    3 1 "R&D"
+    4 2 "Sales"
+    4 4 "R&D"
+
+end
+
+list
+```
+
+## Solution
+
+``` stata
+clear
+
+set obs 1
+g Department = "Sales"
+g Director = "Lavy"
+save department_level_data.dta, replace
+
+clear
+* Input the data using the input byte approach
+input byte Month byte Sales str5 Department
+
+    1 6 "Sales"
+    1 8 "R&D"
+    2 1 "Sales"
+    2 2 "R&D"
+    3 4 "Sales"
+    3 1 "R&D"
+    4 2 "Sales"
+    4 4 "R&D"
+
+end
+
+list
+
+* We want to keep both departments, so 
+* we want a left join or full join
+* since that will maintain R&D which is in the department-month data
+* but not the department data
+* we'll do full join since that's easiest
+merge m:1 Department using department_level_data.dta
+
+browse
+* looks good!
+```
+:::

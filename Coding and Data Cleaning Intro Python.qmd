@@ -1,0 +1,1007 @@
+---
+title: "Introduction to Working with Data: Python Version"
+author: "Nick Huntington-Klein"
+format: 
+  html:
+    self-contained: true
+editor: visual
+toc: true
+theme: minty
+execute:
+  message: false
+  warning: false
+---
+
+This page will serve as an entry-level introduction to how to code with data. If you are starting out for the first time using code and programming to work with data (as opposed to point-and-click statistics software like SPSS, or spreadsheet software like Excel) then this will get you up to the point where you can load data and make some basic changes.
+
+This is companion material to my textbook on causal inference, [The Effect](https://theeffectbook.net). I will focus on the methods and tools used in the book. There's plenty this page doesn't cover. The focus is just the basics! Please check out the [book website](https://theeffectbook.net) or [my main website](https://nickchk.com) for more resources.
+
+This page uses the Python programming language. The page is also available for [R](https://nickchk.com/Coding%20and%20Data%20Cleaning%20Intro%20R.html) and [Stata](https://nickchk.com/Coding%20and%20Data%20Cleaning%20Intro%20Stata.html).
+
+# Getting Started
+
+## What We're Learning (and not learning)
+
+This page will teach you how to:
+
+-   Get started with running code
+
+-   Install and load libraries
+
+-   Load in data from files, the internet, or libraries
+
+-   Write good code and responsibly use AI in your coding
+
+-   Look at your data and get basic statistical results from your data
+
+-   Manipulate your data and get it ready for the kinds of analyses you do in [The Effect](https://theeffectbook.net)
+
+By the time we're done, you should be where you need to be to take a data set that is already reasonably usable and prepare it for analysis for a research project. We won't be getting super deep into the weeds - I will not be covering, for example, how to clean extremely messy or unstructured data. I am also not trying to make you an expert coder. Just the stuff to get you to where you can use the book and start on your own research project.
+
+Further, I will be using the same tools and packages that are used in The Effect, and will be focusing on the kind of tools and procedures used in the book. That means I will be focusing on data sets that are small enough to be opened up on your computer (i.e. "in memory") rather than interacting with huge databases.
+
+## The Very Start
+
+You will need to start by getting Python itself running.
+
+There are many ways to run Python, but I will assume that you are using some implementation of Jupyter, which is a very popular notebook program for running Python, from within some popular IDE (integrated development environment) like VSCode or Spyder.[^1]
+
+[^1]: Jupyter is far from the only way of working in Python. You can work directly with scripts of course. Even in an interactive environment there are alternative approaches like Quarto (which is what I actually use when working with Python myself). I won't get into that here, but you can find out more at [this site](https://quarto.org/docs/get-started/hello/rstudio.html).
+
+If you are working with Anaconda / Spyder, you can go to the [Anaconda download page](https://www.anaconda.com/download) to install it. It will come with Python and Jupyter already set up.
+
+If you are working with VSCode, you can go to the [VSCode download page](https://code.visualstudio.com/download) to download it. Then, open it up and go to Extensions on the left-hand pane. Pick out and download the Python extension and the Jupyter extension. The Python extension may give you additional instructions and steps for how to install Python itself.
+
+**Alternately**, you can skip all of that and make an account on [Google Colab](https://colab.research.google.com/), which is a Google service that lets you run Jupyter in your browser. There are some limitations on its use, like how long your code can run or the size of your files, but you can use it without installing anything. Once you're in your account, click on "New Notebook".
+
+You can check whether everything is working properly by opening a new Jupyter notebook, (File -\> New File -\> New Jupyter Notebook in VSCode), making a Python code chunk (+Code on the top bar), putting in `2+2`, and hitting Play / Ctrl-Enter / Cmd-Enter. It will ask you to pick a kernel (Python), then you should get back a 4.
+
+## Running a Script, and Very Basic Code
+
+In Jupyter, you can run code by putting it in a code chunk and hitting Run (shortcut Ctrl-Enter on Windows and Cmd-Enter on Mac). Try it by putting `2+2` in a code chunk and hitting enter. You should get a 4.
+
+Let's take a look at some very basic example code.
+
+```{python}
+#| eval: false
+2+2
+a = 1
+a
+[4, 3, 1]
+sum([4, 3, 1])
+help(sum)
+```
+
+Take the `2+2` and copy it into its own code chunk. Then, either hit the "Run" button, or do Ctrl-Enter (on Windows) or Cmd-Enter (on Mac). This will run the line of code and give you the result. Typically you'll include more than one line of code in a code chunk, but here we want to see the results one at a time, so we'll just run one line at a time.
+
+Let's look at the next line, `a = 1` . This line of code takes the number `1` and stores it inside (`=`) of a variable called `a`.
+
+Once you've run this line, you've now stored a variable. It will stay in memory even if you delete the line of code, until you restart your Python. Depending on the software you're using Python in you can probably find a list of all the variables you've stored in memory, perhaps an Environment tab. In VSCode you can look for the "Jupyter" tab and click on "Jupyter Variables" to see that you've now stored a variable called `a` with a value of 1.
+
+Now run the `a` line. This will show you the contents of `a`, which we know to be `1`. You'll see a `1` pop up in the results.
+
+Next, run the `[4,3,1]` line. This puts several numbers together to make an **array** / **list** of values. In other words, data!
+
+Let's use a **function** to do a calculation on our data. A function takes input (our data and settings), does a calculation, and gives us back an output. In Python, functions use parentheses `()`. Let's load the Run the `sum([4,3,1])` line. This takes our data `[4,3,1]` and passes it to a function, `sum()`, which calculates the sum of all of our data. You should get back a value of `8`, since that's the sum of 1, 3, ane 4.
+
+How did we know how to take a sum? You can read a function's help file using the `help()` function. Run the `help(sum)` line. You'll see the list of arguments (options) you can set. From this page we learn that the `sum()` function takes an `iterable` as its first argument (anything you can loop over, like a list, for us this was `c(4, 3, 1)`) and a `start` option to tell it what value to start adding to (0 by default). We can set options by naming them, for example `sum([4,3,1], start = 1)` to tell it to add 1 to our total sum to get us 9.
+
+At the bottom of the help text if you scroll down, you'll see some example code for using the function. This is often handy since you can copy/paste the working code and then edit it for your case.
+
+Now, use File -\> Save (or the Save icon) to save your Jupyter notebook somewhere on your computer.
+
+## Downloading and Using Packages
+
+Python has a lot of user-written libraries (packages) containing useful functions for making graphs, doing different kinds of estimates, and so on. These are maintained on several different central repositories, the most popular of which is PyPI.
+
+You can install packages from PyPI using the **pip** package and its `pip` function, or the Packages tab in the bottom-right pane of RStudio.
+
+In The Effect (and on this page), we make heavy use of the **pandas** package, so let's install that now. Run the code:
+
+```{python}
+#| eval: False
+!pip install pandas
+```
+
+Once you've installed the package, **you don't need to install it again**, it's already on your computer. But you **do** need to load it to use it every time you open up Python. Run:
+
+```{python}
+#| eval: false
+import pandas as pd
+```
+
+When you `import` a package, it loads all of the package's functions into memory so you can use them. To use them you need to specify which package the function is in! If we had just done `import pandas`, then we could access the **pandas** function `DataFrame` using `pandas.DataFrame()`.
+
+However, we're going to be using a lot of **pandas** functions, and repeatedly, so typing `pandas.` out every time would get old. So instead we do `import pandas as pd` which will let us do `pd.DataFrame()` instead of `pandas.DataFrame()`.
+
+You can also import a function directly, for example `from pandas import DataFrame`. If we did this then we could just do `DataFrame()` without any `pd.`. However, this is generally only a good idea if you're importing just one or two functions from a package (and you'll see this as an example for how we load the `texas` data on this page below). Otherwise you're likely to run into issues with multiple packages using the same name for a function. So `import pandas as pd` is what you'll see as the standard, as well as in The Effect.
+
+# Loading Data
+
+## Getting Data from Packages
+
+Some Python packages come with data sets that you can load in directly. This is not that common in Python, but this is how we get data for The Effect's code examples so I've included it here. The Effect makes use of the data sets in the **causaldata** package I wrote, so you'll certainly get used to loading data from it! The example code on this page, as well as the example code in the book, will use the `texas` data from the **causaldata** package (the `texas` data is included in the package because it appears in Scott Cunningham's [Causal Inference: the Mixtape](https://mixtape.scunning.com/)).
+
+So, first, install **causaldata** by running `!pip install causaldata` if you haven't already. Then, load the package and the `texas` data with the following code:
+
+```{python}
+#| eval: false
+from causaldata import texas
+texas = texas.load_pandas().data
+```
+
+Easy! Click on `texas` in the Jupyter / Jupyter Variables tab to look at the data like it's a spreadsheet (you may need a data viewer extension if you're using VSCode; it will suggest you one). Or use `texas.head()` to look at the first few rows of data. Additionally, you can use `texas.DESCRLONG` or `texas.DESCRSHORT` to find documentation for the dat, and `texas.NOTE` to see variable definitions. Documentation will not be available from inside Python for data sets that don't come from packages.
+
+## Loading Data from a File
+
+Often your data will be stored in a file that you will need to load in. Examples of these kinds of files include:
+
+-   Excel spreadsheets (.xlsx files)
+
+-   Comma-separated or tab-separated values files (.csv and .tsv), which are like Excel spreadsheets but simpler and more universal
+
+-   Special compressed data files like Stata datasets (.dta) or Parquet files (.parquet), which cater to the needs of data analysts
+
+There are a lot of functions designed to read these files in. You can tell the function where the file is, for example giving it a URL if the file is on the internet, and it will load it in for you. For example, after loading **pandas** you can use `pd.read_csv()` to load in a comma-separated values file, `pd.read_excel()` for Excel sheets, or a whole bunch of other options that should pop up in the autocomplete if you start typing `pd.read_`. To see `pd.read_csv()` in action, run:
+
+```{python}
+#| eval: false
+import pandas as pd
+
+texas = pd.read_csv('https://vincentarelbundock.github.io/Rdatasets/csv/causaldata/texas.csv')
+```
+
+The `texas` data is stored at that URL. After running this code you'll see the `texas` data loaded in your Jupyter Variables tab. Notice that we couldn't just run `pd.read_csv()` on its own - that would load in the data briefly and show it to us but then it would be gone. If we want the data to stick around so we can use it, we need to store it as a variable (`=`), just like we used `a = 1` to make a variable called "`a`" containing a 1 earlier.
+
+The data doesn't *have* to be stored on the internet. You can also load a file from your computer. However, this will require that you know how to use your computer's file system... see the next section.
+
+## Files on Your Computer
+
+`pd.read_csv()` and similar functions don't just work with data from the internet. They also work with files loaded on your computer. You can give the `pd.read_csv()` function a *filepath* that points to a place on your computer, instead of a URL that points to a place on the internet.
+
+If you, [like most people](https://www.statista.com/statistics/272365/age-distribution-of-internet-users-worldwide/), didn't start using a computer to do work until after Google Drive launched in 2012 (and was followed by other cloud storage services like Dropbox and OneDrive soon after), you might not be very familiar with the proper way to store and retrieve files from your computer. Those services encourage you to store files in a way that makes using your file system difficult. This is fine for 99% of people, but not great if you want to write code that accesses files.
+
+**As someone writing code, you really want to USE your file system.** Modern computer use for casual users tries to push you into just putting all your files in a single "Downloads" folder and using a search bar to find things rather than keeping things organized. This will quickly turn into a major headache if you're using your computer heavily, and especially if you're writing code that accesses files. If you have a project, make a folder for the project and keep all the files for that project in it. Maybe even make different subfolders to store data, code, writing, and so on!
+
+Files on your computer are stored in a series of *nested folders*. On my computer, for instance, I have a file called `test_data.csv` stored in my Documents folder. If I'm clicking around then I'd just go to "Documents" and search for it. But really, that Documents folder is inside of my "Nick" folder, which is inside of my "Users" folder, which is in my "C:" drive (standard on Windows).
+
+Now that we have things in folders, how can we load data from files? If I just tried to run `pd.read_csv('test_data.csv')` the code would have no idea that the file is inside of my Documents folder and would give me an error. I need to tell the computer *where to look to find the file*. That's the filepath.
+
+There are two approaches to filepaths. One is to use an **absolute filepath**. An absolute filepath tells the computer exactly where to look, starting from the topmost folder and working its way down. In this case that would be:
+
+```{python}
+#| eval: false
+test = pd.read_csv('C:/Users/Nick/Documents/test_data.csv')
+```
+
+The `/` forward slashes indicate that we're going into a subfolder. So this starts in C: and then goes to the Users folder, then the Nick folder inside of that, then Documents inside of that, and finally the test_data.csv file.[^2]
+
+[^2]: Note that Windows computers, unlike Mac or Linux, typically use backslashes (\\) instead of forward slashes to go into a subfolder. However, when writing code in most languages, they won't let you use the backslash and you must use a forward slash.
+
+This will work. However, it's a **bad idea**. Why? For one, if you give someone else your code, it won't run any more. Unlike URLs, which point to a place on the internet everyone can see, a filepath points to a location **on your computer** that other people can't access. **Sending someone a filepath to a file on your computer does not send them the file.**
+
+Instead, you should use **relative filepaths**. Instead of starting from the topmost folder, relative filepaths start from a *working directory*. You can set your working directory, and then use the filepath from there. For example, if my working directory were the Nick folder, then I could do `pd.read_csv('Documents/test_data.csv')` and it would know where to find the file. Or if my working directory were the Documents folder, I could simply do `pd.read_csv('test_data.csv')`. Then, I could send someone my code and the `test_data.csv` file, and if they set their own working directory properly, they can run my code just fine.
+
+Jupyter will typically run code using as a working directory *whatever folder you've saved your Jupyter notebook in*. So the easiest way to use relative filepaths is to ensure that your code and data are stored in the same folder. Then you can just do `pd.read_csv('test_data.csv')`. Easy!
+
+One step more difficult, but better practice, is to make a `data` subfolder for your data. Then you can set the working directory to the folder the code is in and do `pd.read_csv('data/test_data.csv')`. Even *better* is to have a main project folder with a `data` subfolder and also a `code` subfolder. Put the code in the code folder and the data in the data folder. Then use `..` to "hop up" a folder. `pd.read_csv('../data/test_data.csv')` will start in your code folder, go up one level to the project folder with `../`, then go into the data folder, and finally find your file. Send someone your whole project folder (or have it on a shared cloud-storage folder like a OneDrive your research team can all access) and everything will run smoothly! Even *better* practice is to use a formal project manager and have the project folder be your working directory... but we're getting too advanced here.
+
+# Looking at Data
+
+An important part of working with data is **looking at it**. That includes looking directly at the data itself, as well as looking at graphs and summary statistics of the data.
+
+When you look at data, what are you looking *for*? There are a few things:
+
+-   What is the distribution of the data?
+
+    -   What values can it take?
+
+    -   How often does it take certain values?
+
+    -   If it's numeric, what is its average?
+
+-   Is there anything fishy?
+
+    -   What *should* this variable look like? Does it look like that?
+
+    -   Are there any values in the variable that don't make sense?
+
+    -   Are there any missing values in the variable?
+
+-   How are the variables related?
+
+    -   How does the distribution of one variable change with another?
+
+The kinds of variables there are and the task of calculating summary statistics and the relationships between variables is a huge subject. So instead of cramming it all in here I'll point out that these are covered in Chapters [3](https://theeffectbook.net/ch-DescribingVariables.html) and [4](https://theeffectbook.net/ch-DescribingRelationships.html) of the book, including with code examples in Chapter 4. I'll add just a few additional notes here:
+
+1.  You can look directly at your data, as if it were an Excel spreadsheet, by clicking on it in the Jupyter Variables tab.
+2.  To look at summary statistics for a specific variable, you can take the variable out of the data set with `.` or `[]`. For example, `texas.perc1519` returns the `perc1519` variable from `texas`, as does `texas['perc1519']` (which may be preferable if your variable name has a space in it or shares a name with a method). From there you can send it to all sorts of summary statistics functions, like taking its mean with `texas.perc1519.mean()`, getting a full range of summary statistics with `texas.perc1519.describe()`, and so on.
+3.  Many of the summary statistics methods we use come from the **numpy** package, which **pandas** is based on. We can, if we like, do `import numpy as np` and then `np.mean(texas.perc1519)` instead of `texas.perc1519.mean()`. This may give us access to a wider range of descriptive functions.
+4.  Many summary statistics functions will automatically drop return a `pd.NA` (missing) value if any of the data is missing. This isn't the only (or even necessarily best) way to handle missing values, but it is definitely the most common. See [Chapter 23](https://theeffectbook.net/ch-UndertheRug.html#why-it-had-to-go-i-dont-know-missing-data) for more.
+5.  For categorical or discrete variables, a good way to see how often each value is taken is `.value_counts()`. So `texas.year.value_counts()` will show us how many observations there are for each year.
+6.  `.describe()` can be used on the whole data set at once. Try `texas.describe()` to see summary statistics for all the variables.
+
+# The Goal of Manipulating Data
+
+## What You're Trying to Do
+
+Your goals in preparing your data are the following:
+
+1.  Take your raw data and put it in the form you need it for your analysis
+    -   Selecting the right subsample (if any)
+    -   Creating any variables you might need that aren't in there
+    -   Merging with other data sets
+2.  Checking if anything looks wrong
+    -   Does anything in the raw data look like an error?
+    -   Have you made any errors in your code?
+
+Often, you will want to make sure your data is in **tidy data** format.
+
+What is tidy data? Let's take as an example a data set of the heights and weights of 30 different children in a classroom. We've taken one set of measurements per child, so the **observation level** is one child. Two of the children in this classroom are Maria and Tom.
+
+In a tidy data set,
+
+-   **Each observation is one row of data** *(meaning: There are 30 children in the data, so the data set has 30 rows. Maria is one row of the data, and her height and weight are both on that row. We don't have one row for Maria's height and another row for her weight. We don't have Maria's height and Tom's height on the same row.)*
+
+-   **Each variable is a column, and each column is a variable** *(meaning: one column of the data is everyone's height. We don't have one column for Maria's height and another column for Tom's height.)*
+
+-   **Each value is a cell, and each cell is a single value** *(meaning: we don't try to stuff multiple values in a single cell. We don't have one column just called "height and weight" and put "50 inches tall and 70 lbs" for Maria. We also don't stuff all the children into one row and put \[50 inches, 46 inches, 52 inches, ...\] in a single cell in the height column).*
+
+Tidy data is helpful because it makes data analysis on lots of observations much easier to perform. Often if you are getting data from sources that tend to only look at one observation at a time (for instance, in a quarterly report for a business where they look at a single sales number, a single costs number, etc.) you tend to get non-tidy data since non-tidy data often makes it easier to find a single data point of interest. Not so good for analysts though! For more information on tidy data, see [this page](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html) (which is written for the R language but the tidy data concept applies to Python too).
+
+If your data is heavily *non*-tidy and you need to tidy it, a useful tool you'll probably need is the *pivot*. Pivoting data is a huge headache in any language and notoriously is hard to get the syntax right for, and I don't cover it on this page. You can find out more [here](https://pandas.pydata.org/docs/user_guide/reshaping.html) though!
+
+## Writing (or having AI Write) Acceptable Data Manipulation Code
+
+There are a few things you should keep in mind when writing code to manipulate your data:
+
+-   Add *comments* to your code. In Python you can do this by starting the line with `#`. These comments will help others figure out what your code is trying to do. It will also help *you* figure out what your code is trying to do when you return to it later.
+
+-   Make sure that *all* of your code is written in a code chunk (or multiple scripts). If you use interactive Python (iPython) in addition to Jupyter, make sure you copy your code into your script / notebook before moving on. Don't fall prey to the trap of thinking that you'll just remember it later! Further, **make sure your code is in order**. You don't want to have to remember "oh okay in this notebook I'm supposed to run chunk 1 first, then chunk 5, then back to chunk 3..." **It should be possible to start from a fresh brand-new Python session and run your notebook from start to finish without error**. As you're working, it's not a terrible idea to occasionally save your work, close Python down, reopen it, down and run your script chunk-by-chunk from the start to make sure you haven't changed something that breaks your code.
+
+-   You need to **look at your data after every line of data manipulation code**. Using the tools from the "Looking at Data" section above, you should be checking what your data looks like after **every line of code**. You just wrote a line of code that tries to do something - make a new variable, fill in a missing value, aggregate the data, etc.. So ask yourself - **did it do that thing? You should probably check.** Especially when you're starting out, your code might not do what you expect! **I have been helping students with data manipulation code for a long long time. If they run into an issue, the great majority of the time it's not some complex technical problem, it's just that they forgot to check their data to ensure the code did what they thought it did**.[^3]
+
+[^3]: Jupyter makes this kind of hard by making it so you have to run an entire chunk of code rather than a single line at once. One way you can get around this is to have a chunk of your working code, and then write each new line of code in a new chunk that only has a single line (plus whatever code you need to see whether the outcome is as expected). If it works, then you copy it back up to your working code.
+
+With that in mind, how about AI/LLM services like ChatGPT Canvas, Copilot, and others? Can't we just have them write the code?
+
+Well, yeah. Coding assistants are effective and powerful. And realistically, outside of a classroom setting where it might not be allowed, you're probably going to be using them to help write your code the rest of your life.
+
+So... use them now right? Well, maybe. **While AI is excellent at preparing code, it is prone to error**. You simply **can't take it for granted that the code will work**. This is especially true in coding for data manipulation, where the AI is often lacking crucial context necessary to write the correct code. That means that **AI code is only acceptable if you are capable of checking its work**.
+
+That means two things:
+
+1.  Don't have AI write code you couldn't write yourself. **You need to understand how to code before you can use AI to write code.** Otherwise you won't know what the code is doing and can't check whether it's right.
+2.  Don't assume that the AI did it properly. This is also true if you're writing code yourself, but especially if AI is writing code, you **have** to do the above step of going line-by-line and checking whether the code is actually doing what it's supposed to do.
+
+## Running Into Errors
+
+When you code you will almost certainly run into errors.
+
+For example, consider the code `pd.to_numeric(['hello','3'])` . `pd.to_numeric()` turns strings into numbers, so `'3'` will get turned into regular-ol `3`. However, `'hello'` isn't something it can convert into a number, so it will give you the error and the warning `` `Unable to parse string 'hello' ``. When you get an error, it's always something you have to fix.
+
+How can you fix things when you run into an error? Errors are often confusingly worded and require some technical understanding to figure out what they're saying. But I have some pointers.
+
+1.  In general, try Googling or asking an AI what the error means. It can often tell you.
+2.  The error message itself is telling you what the problem is. Even if you can't understand it, will usually tell you **which part of the code** the error is coming from. THIS is the part to look for. In the above error message, you might not know what `'parse'` means, but you do know that it's saying the error has to do with the `'hello'` string. So look at that part of your code - you might be able to figure out yourself what the problem is, even if you can't understand the error message itself ("oh whoops I forgot that this file had some random words along with the numbers").
+
+# How to Manipulate Data
+
+Now we will get into some actual data manipulation code. As in the book we will be working with **pandas** tools.
+
+Something to note is that we'll be using **method chaining** to work with data. **pandas** lets us work with objects called `DataFrame`s. These objects store data in a table-like structure, and they have **methods** that let you manipulate the data. Further, each method gives you back a new `DataFrame` that has been changed in the way you want... and has the same methods intact so you can keep modifying it further! This serves to let you chain together multiple manipulations in a row, moving your data along a data-manipulating machine like it was a conveyer belt. This makes your code easier to read, and avoids having to nest a bunch of functions inside of each other, which can make it easy to make errors.
+
+For example, consider this code:
+
+```{python}
+#| eval: false
+import pandas as pd
+from causaldata import texas
+texas = texas.load_pandas().data
+(texas
+  .query('poverty < 20')
+  .query('state == "TX"'))
+```
+
+This code starts with the `texas` data, applies a `.query()` to it to limit the data to observations where the poverty rate is below 20 (we'll get to more on `.query()` in a bit), and then takes *that* and limits it even further to just observations from Texas.
+
+**Also**, note that all of the following code will show you how to manipulate data. However, often you will want to **use that manipulated data**. If this is the case, you'll need to **store the manipulated data in a new object** (or overwrite the old one).
+
+For example, if you run that last code chunk I showed you, the code will limit the data to observations with poverty below 20% and in Texas, show you that limited data, and then immediately forget it ever did anything. If you check the `texas` data again there's no new column, because you didn't store your changes! For that you'd have to do:
+
+```{python}
+#| eval: false
+import pandas as pd
+from causaldata import texas
+texas = texas.load_pandas().data
+texas = (texas
+  .query('poverty < 20')
+  .query('state == "TX"'))
+```
+
+NOW the `texas` data is limited to just those rows.
+
+## Picking Only Some of Your Data (Subsetting)
+
+If you want to keep only certain *columns* (variables) from your data, there are a few options. One option is to make a list of the column names you want to keep and send that to the `DataFrame` itself with `[]`, or to `.loc[:, ]` (the `:` means "keep all the rows"). If you like you can use column positions instead of names and use `.iloc[:, ]`. If you want to *drop* a specific column or set of columns, you can use the `.drop()` method and its `columns` option.
+
+```{python}
+#| eval: false
+import pandas as pd
+from causaldata import texas
+texas = texas.load_pandas().data
+
+# Keep the year and state variables
+texas[['year', 'statefip']]
+# or
+texas.loc[:, ['year','statefip']]
+# or, since they're the first two variables
+texas.iloc[:, [1,2]]
+
+# Get rid of the bmprison variable
+texas.drop(columns = 'bmprison')
+```
+
+How about picking just some of the *rows* (observations) to keep? The primary ways to do this are with `.loc[]` or with the more method-chaining friendly option `.query()`.
+
+Both of these approaches want you to give it a calculation using your data that is either true or false. If it's true, it keeps the row. If it's false, it drops it. `.loc[]` wants you to construct the calculation and then pass the result to `.loc[]`, while `.query()` has you write a string that does the calculation, using direct references to the column names. The book mostly uses `.query()` so I'll focus on that for most of this page.
+
+```{python}
+#| eval: false
+import pandas as pd
+from causaldata import texas
+texas = texas.load_pandas().data
+
+# Keep only data from the state of Utah
+# Note that == *checks* whether two things are equal,
+# while = *assigns* the left thing to be the right
+# so state == 'Utah' is TRUE whenever the state variable is 'Utah'
+# and FALSE otherwise
+texas.loc[texas.state == 'Utah', :]
+# or
+texas.query('state == "Utah"')
+
+# Use | to say "or" to chain multiple statements,
+# or & for "and"
+# Keep data that is from Utah OR is from Montana and the year 1994 or later
+# >= means "greater than or equal to"
+texas.query('(state == "Utah") | (state == "Montana" & year >= 1994)')
+```
+
+In addition to `.loc[]` and `.query()` there is also `.iloc()`. `.iloc()` keeps rows based not on a true/false statement, but rather their index position. `texas.iloc[1:10]` will keep rows of the `texas` data with index values 1 through 10. We don't tend to use `.iloc[]` all that often in causal inference but it has occasional uses.
+
+That index is actually something important to keep in mind when working with **pandas**. The index value of the rows is **not** the row position of the data. When you first load data, then it's likely that `texas.iloc[100]` will give you the 101st row of the data. However, if you filter the data down and only keep some of the rows, then **each data point's index stays the same, even as other rows disappear.** If you drop the first 20 rows, for instance, then `texas.iloc[100]` will give you the 81st row of the data, not the 101st.
+
+There are some benefits to this approach, and the indexing system that **pandas** uses can sometimes let you pull some neat tricks. But for our current application it is mostly just a pain, and we'd usually rather that the row indices are just the row number. For that reason, we often follow any changing of the rows with a `.reset_index()` method, which resets the index to just be the row numbers.
+
+### Now You
+
+1.  Load up the **pandas** and **causaldata** packages, and load in the `texas` object. Don't do the `load_pandas()` stuff yet.
+2.  Use `texas.NOTE` to see the variable descriptions and find which variable is for the unemployment rate. Then load the actual data set as `texas`.
+3.  Use any of the the tools from the Looking at Data section to figure out whether the unemployment rate is on a 0-1 or a 0-100 scale.
+4.  Use `.drop()` to drop the `income` variable and save the result as `filtered_texas`. For all following changing, keep saving the changes to `filtered_texas`
+5.  Then, use keep only the unemployment rate variable, as well as `state` and `year`.
+6.  Use `.query()` to keep only rows that **either** have an unemployment rate above 5% **or** are in the state of Texas.
+7.  Look at your result to make sure it worked as intended (hint: maybe check the unemployment rates for all non-Texas states (`state != 'Texas'`) to ensure they're above 5%? Check to make sure all the Texas observations are there?)
+
+::: panel-tabset
+## Setup
+
+```{python}
+#| eval: false
+import pandas as pd
+from causaldata import texas
+```
+
+## Solution
+
+```{python}
+#| eval: false
+import pandas as pd
+from causaldata import texas
+texas.NOTE
+# looks like the unemployment rate variable is ur
+
+texas = texas.load_pandas().data
+
+texas.ur.describe()
+# It goes from 0 to 100, not 0 to 1
+
+# drop income
+filtered_texas = texas.drop(columns = 'income') 
+
+# keep year, state, and ur
+filtered_texas = filtered_texas[['state','year','ur']]
+
+# Keep rows if they have an ur above 5 or are in Texas
+filtered_texas = filtered_texas.query('state == "Texas" | ur > 5')
+
+# Check states
+filtered_texas.state.value_counts()
+# check UR of non-Texas states
+filtered_texas.query('state != "Texas"').ur.describe()
+```
+:::
+
+## Creating and Editing Variables
+
+You can create and edit variables using the `.assign()` method, or by using `[]`. For example:
+
+```{python}
+#| eval: false
+texas = (texas
+  .assign(just1s = 1)
+  .assign(just2s = 2))
+
+# or
+texas['just1s'] = 1
+texas['just2s'] = 2
+```
+
+will create two new columns in the data: `just1s`, which is `1` in each row, and `just2s`, which is `2` in each row. We're both naming the variables we add (`just1s`, `just2s`) and setting their values (`1`, `2`) at the same time. If the name we give a column is the same as a name already in the data, this will overwrite the old column, letting us edit existing data.
+
+Usually, you're not setting all the values of your new variable to the same thing, as we are here. Typically you're combining your existing variables and doing some calculations on them to make a new column. Let's take our `year` variable and add 1 to it. And while we're at it, let's pretty up our naming with the `rename()` function and change our column names to be capitalized (which might look nicer on a graph we make later).
+
+```{python}
+#| eval: false
+texas = (texas
+  .assign(next_year = lambda x: x.year + 1)
+  .rename(columns = {'year': 'Year', 'next_year': 'Next Year'}))
+  
+# or
+texas['next_year'] = texas['year'] + 1
+texas = texas.rename(columns = {'year': 'Year', 'next_year': 'Next Year'})
+```
+
+What's with the `lambda x` thing? Well, typically when we're making a new variable in our context, we're going row-by-row and doing a calculation using data in that row. In this case that's taking the row's `year` value and adding 1. `lambda x:` does that. It's a little mini-function for calculating row-by-row. It iterates through each row with `x` (or whatever you want to call it), so `x.year` means "the year value on the current row".
+
+#### Now You
+
+1.  Load up the **pandas** and **causaldata** packages, and load in the `texas` object and data.
+2.  Use `.assign()` to make a new variable called `ur_1scale` by dividing the `ur` variable by 100.
+3.  Then, use `.rename()` to change the name of `ur` to `unemprate` and `ur_1scale` to `Unemployment Rate (0-1 Scale)`
+4.  Save the result as `texas_newvars` and use `.head()` to check that your new variable looks like it's supposed to.
+
+::: panel-tabset
+## Setup
+
+``` python
+import pandas as pd
+from causaldata import texas
+texas = texas.load_pandas().data
+```
+
+## Solution
+
+``` python
+import pandas as pd
+from causaldata import texas
+texas = texas.load_pandas().data
+
+texas_newvars = (texas
+  .assign(ur_1scale = lambda x: x.ur/100)
+  .rename(columns = {'ur':'unemprate','ur_1scale':'Unemployment Rate (0-1 Scale)'}))
+
+texas_newvars.head()
+# Looks good!
+```
+:::
+
+### Working With Numeric Variables
+
+The easiest kinds of variables to create and edit are numeric variables. Just do a calculation on your existing columns to get your new variable! It will go row by row to do the calculation. Or, if you do some sort of calculation that only gives you back one value, it will apply that single value to all the rows.
+
+From there it's just learning the different functions and operations to do your math, and being careful with parentheses to keep your intended order of operations intact.
+
+For example, the following code multiplies the share of the population in the state that is Black by the share who are 15-19 to get a (rough) share who are both Black and 15-19. Then, it uses the `.mean()` method which only gives back a single value, to calculate the state/year's income relative to the mean:
+
+```{python}
+#| eval: false
+texas = (texas
+  .assign(black_and_1519 = lambda x: (x.black/100)*(x.perc1519/100))
+  .assign(income_relative_to_mean = lambda x: x.income - texas.income.mean()))
+```
+
+#### Now You
+
+1.  Load up the **pandas** and **causaldata** packages, and load in the `texas` object, but hold off on getting the data for now.
+2.  Use `texas.NOTE` to see the descriptions of all the variables.
+3.  Use `.assign()` with the .`min()` method (which calculates the minimum of a variable) to calculate the alcohol consumption per capita *divided by* the minimum alcohol consumption per capita across all values. Call this new variable `alcohol_relative`.
+4.  Use `.assign()` to create a new variable called `white_share` equal to the number of white men in prison divided by (white men in prison + black men in prison).
+5.  Save the resulting data set as `texas_newvars`
+6.  Check the data using tools from Looking at Data to ensure the results look right (how might you do this? Well, one example is that `white_share` should never be below 0 or above 1, and `alcohol_relative` should never be below 1. Are both of those true? How did I come up with those rules?)
+
+::: panel-tabset
+## Setup
+
+``` python
+import pandas as pd
+from causaldata import texas
+texas = texas.load_pandas().data
+```
+
+## Solution
+
+``` python
+import pandas as pd
+from causaldata import texas
+texas.NOTE
+texas = texas.load_pandas().data
+
+texas_newvars = (texas
+  .assign(alcohol_relative = lambda x: x.alcohol/texas.alcohol.min())
+  .assign(white_share = lambda x: x.wmprison/(x.wmprison+x.bmprison)))
+
+# Check the ranges of our variables (there are ways other than vtable to do this)
+texas_newvars[['alcohol_relative','white_share']].describe()
+# Alcohol's min is 1 and white_share is never negative or above 1. Great!
+```
+:::
+
+### Working With Strings (Text Variables)
+
+It's not uncommon to get data in the form of *character* variables, i.e. text. There's a lot to say on how to work with these variables, but for our purposes we don't need to get too deep into the weeds.
+
+In Python in general, strings are stored as arrays of letters. So for example `'hello'[0]` will return `'h'` since that's the first letter (index position 0) of the string `'hello'`. You can also combine together strings by adding them. `'hello'+' '+'there'` gets you `'hello there'`.
+
+The **pandas** package gives us a lot more we can do, however. If you have a column of string data, you can access its string-specific functions with the `.str` method, which should then provide you a bunch of autocomplete options for things you can do with strings. We're not going to need to go much beyond that. Thankfully we don't have to get into the terror that is [regular expressions](https://cran.r-project.org/web/packages/stringr/vignettes/regular-expressions.html). Note that these methods don't work on strings *in general*, they only work on strings stored as **pandas** data columns.
+
+`.str.slice()` takes a substring out of a string based on its position. So if our data column `words` in the `DataFrame` called `d` contained a string `'hello'`, then `d.words.str.slice(1,2)` will take the characters of `'hello'` from the 2nd to the 3rd position, and will give you `'el'`.
+
+`.str.split()` takes a string and splits it into pieces based on a "splitting" character. If our `words` column contains the string `'Eggs, milk, cheese'` then `d.words.str.split(', ')` will give you back `['Eggs','milk','cheese']`.
+
+`.str.contains()` checks whether a substring is present in a string. If our `words` column has the entries `['water','food','shelter']` in its three rows, then `d.words.str.contains('t')` will give you back `[True,False,True]` since "t" is in "water" and "shelter" but not "food".
+
+Finally, you might commonly want to get a specific word of the string. We can do this by combining our `.str.split()` from before with `.str.get()` which will get an element from a list. So if our `words` column contains a string `'Tale of two cities'`, then `d.words.str.split(' ').str.get(1)` will give you `'of'`.
+
+There's plenty more, but this will be enough to get going and it may be a while before you need anything else. Try `help(pd.core.strings.accessor.StringMethods)` to see what else is out there.
+
+#### Now You
+
+1.  Load up the **pandas** and **causaldata** packages, and load in the `texas` data.
+2.  Limit the data to the `state` variable, and then use the `.drop_duplicates()` method which will get rid of all duplicates, and `.reset_index(drop = True)` to reset the index. Now you've got a data set that just lists the 50 state names (plus Washington DC).
+3.  Use `assign()` with `lambda` to make a new variable called `first_letter`, using `.str.slice()` to get the first letter of every state.
+4.  Use `assign()` with `lambda` to make a new variable called `is_virginia`, using `.str.contains()` to make the variable `True` for every state that contains the string "Virginia"
+5.  Use `assign()` with `lambda` to create a new variable called `new_state`, using `.str.split().str.get()` to get the first word of the state's name, and then using `==` to check if that first word is "New".
+6.  Save the resulting data set as `state_names`
+7.  Check the data by looking at it directly with `texas` or clicking on it in the Jupyter Variables tab to make sure everything worked properly.
+
+::: panel-tabset
+## Setup
+
+``` python
+import pandas as pd
+from causaldata import texas
+texas = texas.load_pandas().data
+```
+
+## Solution
+
+``` python
+import pandas as pd
+from causaldata import texas
+texas = texas.load_pandas().data
+
+
+texas = texas[['state']].drop_duplicates().reset_index(drop = True)
+
+texas = (texas
+    .assign(first_letter = lambda x: x.state.str.slice(0,1))
+    .assign(is_virginia = lambda x: x.state.str.contains('Virginia'))
+    .assign(new_state = lambda x: x.state.str.split(' ').str.get(0) == 'New')
+)
+
+texas
+```
+:::
+
+### Working With Categories
+
+Often, we have a variable that takes one of a limited set of possible mutually exclusive values. For example, days of the week can only be Sunday, Monday, Tuesday, etc.. We might store these as strings, but really they're not the same thing. We want R to recognize these as *categorical* variables and treat them appropriately. Plus, treating them as categorical lets the computer handle them more efficiently.[^4]
+
+[^4]: Saying your data is "Sunday", "Monday", "Tuesday", etc. are more memory-intensive and difficult for the computer to work with than saying your data is 1, 2, 3, and oh hey computer remember that 1 = Sunday, 2 = Monday, and so on. Numbers are way more efficient for computers to handle.
+
+The `pd.Categorical()` function can convert a string (or discrete numeric) variable to a factor. We can also use it to set the *levels* of the factor.
+
+Some categorical variables are *ordered*. For example, if the variable is "country", that's not ordered. France and Australia are different countries, but one isn't, like, *more* than the other. However, if the variable is "education", then "High School" is *more* education than "Elementary School" and *less* education than "College", so these categories are ordered. The *levels* of the factor are its order. The order matters! If you run a regression with the factor variable as a predictor, the *reference category* will by default be the first level of the factor. If you use the variable in a graph, then the levels of the factor will be used to determine the order the categories are shown on the graph.
+
+```{python}
+import pandas as pd
+from causaldata import texas
+texas = texas.load_pandas().data
+
+# Turn the state variable into a factor
+texas = (texas
+  .assign(state_factor = pd.Categorical(texas.state)))
+
+# Leave all the levels as-is but change the reference category to Texas
+# First, pull out the list of categories and put Texas at the front
+cats = ['Texas'] + [cats for cats in texas.state_factor.cat.categories if cats != 'Texas']
+# Re-make the factor but with the new categories, setting it to be ordered
+texas.state_factor = pd.Categorical(texas.state_factor, categories=cats, ordered=True)
+# See how Texas is now at the front
+texas.state_factor.cat.categories
+```
+
+```{python}
+# Set the factor levels directly
+fake_data = pd.DataFrame({'Letters': ['A', 'B', 'C', 'C', 'D']})
+fake_data['Letters'] = pd.Categorical(fake_data['Letters'], categories=['C', 'D', 'A', 'B'], ordered=True)
+fake_data['Letters'].value_counts()
+```
+
+Another function to highlight is one that's useful in *creating* factor variables, and that's `pd.cut()`. `pd.cut()` lets you set carve up a numerical value into bins, which are then considered an ordered factor.
+
+```{python}
+texas = (texas
+    .assign(poverty_rate_categories = pd.cut(texas.poverty,
+                                             bins=[-float('inf'), 10, 20, float('inf')],
+                                             labels=['Low Poverty', 'Medium Poverty', 'High Poverty'],
+                                             ordered=True)))
+```
+
+1.  Load up the **pandas** and **causaldata** packages, and load in the `texas` data.
+2.  Use `.assign()` and `pd.cut()` to create `alcohol_per_capita_bins` equal to 'Low Drinking' if `alcohol` is below 2, 'Medium-Low Drinking' for 2-2.5, 'Medium-High Drinking' for 2.5-3, and 'High Drinking' for values above 3.
+3.  Use `.assign()` and `pd.cut()` to turn `alcohol_per_capita_bins` into a factor, with `levels` set to in the order of Low, Medium-Low, Medium-High, and High.
+4.  Use `pd.Categorical()` to change `alcohol_per_capita_bins` so that its reference category is 'High Drinking'.
+5.  Check the data using `.value_counts()` to make sure the categories were created and ordered properly. After following all the instructions above, the order should be High, Low, Medium-Low, Medium-High.
+
+::: panel-tabset
+## Setup
+
+``` python
+import pandas as pd
+from causaldata import texas
+texas = texas.load_pandas().data
+```
+
+## Solution
+
+``` python
+texas = (texas
+  .assign(alcohol_per_capita_bins = pd.Categorical(
+    pd.cut(texas.alcohol, 
+           bins=[-float('inf'), 2, 2.5, 3, float('inf')],
+           labels=['Low Drinking', 'Medium-Low Drinking', 'Medium-High Drinking', 'High Drinking']),
+    ordered=True)))
+texas.alcohol_per_capita_bins = pd.Categorical(texas.alcohol_per_capita_bins, 
+    categories=['High Drinking','Low Drinking', 
+                'Medium-Low Drinking', 'Medium-High Drinking'],   
+    ordered=True)
+texas.alcohol_per_capita_bins.cat.categories
+```
+:::
+
+### Working With Dates
+
+Dates are the worst. Everyone who works with data hates them. They're inconsistent (different number of days in the month, days in the year (leap years), time zones are wild, many different date formats with different levels of precision, etc. etc.). The **tidyverse** package **lubridate** makes working with dates much much easier and I strongly recommend using it whenever you're dealing with dates.
+
+At our basic level, there are only a few things we need to worry about with dates. The first is converting non-date data, like a string that reads '1999-02-09' into a proper date that R recognizes. The second is pulling date information back out of that date variable (like getting that the year of that date is 1999). The third is "flattening" dates, for example getting that the first day in that month's date is February 1, 1999, which can be handy when aggregating date-based information.
+
+We can convert date data into a proper date format using the `pd.to_datetime()`function. This function is fairly flexible. Do you have data that looks like '1999-02-18', i.e. year-month-day? It'll figure it out. How about just the year and month, like 'February 1999'? It'll figure that out too, and give you the first day of the month. Have data with time as well, like "Mar 10, 1998 08:00"? Yep that works too.
+
+Once we have a proper date, we can use `.year`, `.month`, `.day`, `.week`, and so on to pull out information from the date. If `mydate` is the date March 8, 1992, then `mydate.month` will give back 3 (since March is the 3rd month).
+
+Finally, we can flatten dates with `.to_period()`. `.dt.to_period('M').dt.to_timestamp()` will first get the date at the start of the month that `mydate` is in (with `.dt.to_period('M')`, and then convert back to a datetime (with `.to_timestamp()`), which includes the day (the first, it defaults to), resulting in March 1, 1992.
+
+#### Now You
+
+1.  Load up the **pandas** and **causaldata** packages, and load in the `texas` data.
+2.  Use `.assign()` and `+` to paste together 'February 2' with the `year` variable, creating `date_feb_2`.
+3.  Use `.assign()` and `pd.to_datetime()` to turn `date_feb_2` into a proper date variable.
+4.  Use `.assign()` and `.to_period()` to make `date_jan_1` out of `date_feb_2`. `date_jan_1` is January 1 of the year, i.e. the first day of that year.
+5.  Use `.assign()` and `.year` to create `new_year`, taking the year of `date_jan_1`.
+6.  Use `np.mean()` with `new_year` and `year` to check that they are always the same.
+
+::: panel-tabset
+## Setup
+
+``` python
+import pandas as pd
+from causaldata import texas
+texas = texas.load_pandas().data
+```
+
+## Solution
+
+``` python
+import pandas as pd
+from causaldata import texas
+texas = texas.load_pandas().data
+
+# Paste together
+texas = texas.assign(date_feb_2=lambda df: pd.to_datetime('February 2 '+df['year'].astype(str)))
+texas = texas.assign(date_feb_2=lambda df: pd.to_datetime(df.date_feb_2))
+texas = texas.assign(date_jan_1=lambda df: df.date_feb_2.dt.to_period('Y').dt.to_timestamp())
+texas = texas.assign(new_year=texas.date_feb_2.dt.year)
+
+# Check that they're always the same
+(texas.new_year == texas.year).mean()
+# the mean is 1, so they're always the same
+```
+:::
+
+## Aggregating Data
+
+A data set's **observation level** is whatever is represented by a single row of data. If you have a data set of 30 students in a classroom, and you have one measurement per student and thus one row of data per student, then the observation level is "one student". If you follow those same students over many years and have one row of data per student per year, then the observation level is "student-year".
+
+Often you might have data at a more fine-grained observation level and want to broaden it. Perhaps you have that student-year data but want to do an analysis of students overall. To do this you can **aggregate** the data.
+
+In the **tidyverse** this can be done with `.groupby()`, which ensures that aggregating `.agg()` methods or transforming `.transform()` methods that follow are done within-group. `.agg()` will aggregate multiple rows into one. The result will be a data set at the **observation level** of whatever you put in `.groupby()`.
+
+```{python}
+#| eval: false
+import pandas as pd
+from causaldata import texas
+texas = texas.load_pandas().data
+
+# the original texas data has a state-year observation level
+
+# Get the alcohol consumption by state,
+# averaged over all the years (note of course agg doesn't JUST do means)
+average_alcohol_by_state = (texas
+  .groupby('state')
+  .agg(avg_alcohol = ('alcohol','mean')))
+# Other more flexible ways of specifying the aggregation function:
+# (allowing functions that they didn't build in like 'mean',
+# or allowing multiple variables to be aggregated at once)
+#   .agg({'alcohol': 'mean'}))
+#   .agg({'alcohol': np.mean}))
+#   .agg({'alcohol': lambda x: x.mean()}))
+
+average_alcohol_by_state.head()
+```
+
+#### Now You
+
+1.  Load up the **pandas** and **causaldata** packages, and load in the `texas` data.
+2.  Use `.groupby()` to group the data by `state`.
+3.  Use `.agg()` to get mean `income` and the sum of `bmprison`, respectively. Call the summarized data set `stateavg`.
+4.  Look at the data with `.head()` or click on it in the Environment pane to ensure it worked properly.
+
+::: panel-tabset
+## Setup
+
+``` python
+import pandas as pd
+from causaldata import texas
+texas = texas.load_pandas().data
+```
+
+## Solution
+
+``` python
+import pandas as pd
+from causaldata import texas
+texas = texas.load_pandas().data
+
+stateavg = (texas
+  .groupby('state')
+  .agg({'income':'mean','bmprison':'sum'})
+)
+            
+stateavg.head()
+```
+:::
+
+## Multi-Row Calculations
+
+It's not uncommon to need to use *multiple* (but not *all*) rows of data to calculate something you're interested in. Some ways this might occur include:
+
+-   Calculating a statistic by group (for instance, calculating the mean of something separately for group A, then again for group B, and so on)
+
+-   Calculating something like a growth rate where you want to know the value of something relative to the period just before, or the first period in the data
+
+To calculate statistics by group, just like in the Aggregating Data section, we can use `.groupby()` to do by-group calculations. However, if we want to *calculate* by group and create a new column with that calculation rather than change the observation level, we want to follow that `.groupby()` with a `.transform()` instead of an `.agg()`.
+
+One common application of `.groupby()` followed by `.transform()` is to calculate variables that are de-meaned or standardized, where you want to subtract the group mean from something, and then (for standardizing) divide by the group standard deviation. Unfortunately `.groupby()` doesn't play nice with `.assign()` so we need to be a little laborious here:
+
+```{python}
+#| eval: false
+import pandas as pd
+from causaldata import texas
+texas = texas.load_pandas().data
+
+texas['mean_income'] = (texas.groupby('state')['income'].transform('mean'))
+texas['sd_income'] = (texas.groupby('state')['income'].transform('std'))
+texas = texas.assign(
+    income_z = (mydat.income - mydat.mean_income) / mydat.sd_income
+)
+```
+
+For growth rates, you'll need to keep track of the order of the data. `.sort_values()` lets you sort the data set by whatever variables you give it, presumably time order. Then, `.shift()` lets you refer to an observation one row above (or any number of rows),`.pct_change()` will specifically calculate a percentage change from the previous row, and `.iloc[0]` or `.iloc[-1]` let you refer to the first or last row in the group, respectively. There are also the functions `.cumsum()` and `.cumprod()` for cumulative sums and products of all the observations up to that point (and `.rolling()` for rolling averages). You can also do all this while dropping the `.groupby()` stuff if your data is just a single time series without groups.
+
+```{python}
+#| eval: false
+import pandas as pd
+from causaldata import texas
+texas = texas.load_pandas().data
+
+# we want growth from year to year so set it in year order
+texas = texas.sort_values(by=['state', 'year'])
+# pct_change will calculate the percentage change from the previous row
+texas['prison_growth'] = texas.groupby('state')['bmprison'].pct_change()
+# although we can take longer lags if we like (handy if the data is, say, monthly)
+texas['prison_growth_10yrs'] = texas.groupby('state')['bmprison'].pct_change(periods=10)
+# let's show a way to do it with .shift() for flexibility
+texas['prison_growth_10yrs_shift'] = texas.groupby('state')['bmprison'].transform(lambda x: x / x.shift(10) - 1)
+# perhaps we want growth since the start
+texas['prison_index'] = texas.groupby('state')['bmprison'].transform(lambda x: x / x.iloc[0])
+
+# let's look at one state's results
+texas.query("state == 'Texas'")[['year', 'bmprison', 'prison_growth', 'prison_growth_10yrs','prison_growth_10yrs_shift', 'prison_index']]
+```
+
+#### Now You
+
+1.  From the **causaldata** package load the `castle` data set (not `texas`!). Use `castle.NOTE` to see the descriptions of all variables after importing the `castle` object but before loading the data.
+2.  Use `.transform()` to create `avg_robbery` equal to the mean robbery rate each year across all states, grouping the data by `year`.
+3.  Now use `.sort_values()` to sort the data by `sid` and `year`
+4.  Create the variable `robbery_yoy` to calculate the percentage growth in robbery rates by state from one year to the next, grouping by `sid`.
+5.  Create the variable `robbery_index` which is the percentage growth in robbery since the start of the data, grouping by `sid`
+6.  Use `query()` to look at `sid == 1` and just the variables `year`, `robbery`, and any variables you just created
+
+::: panel-tabset
+## Setup
+
+``` python
+import pandas as pd
+from causaldata import castle
+castle = castle.load_pandas().data
+```
+
+## Solution
+
+``` python
+import pandas as pd
+from causaldata import castle
+castle.NOTE
+castle = castle.load_pandas().data
+
+# Group the data by year and get average robbery rate
+castle['avg_robbery'] = castle.groupby('year')['robbery'].transform('mean')
+
+# now group by state and put in order
+castle = castle.sort_values(by=['sid', 'year'])
+# calculate the percentage change in robbery rates by state from one year to the next
+castle['robbery_yoy'] = castle.groupby('sid')['robbery'].pct_change()
+# calculate the percentage growth in robbery since the start of the data
+castle['robbery_index'] = castle.groupby('sid')['robbery'].transform(lambda x: x / x.iloc[0] - 1)
+
+#Use query() to look at sid == 1 and just the variables year, robbery, and any variables you just created
+castle.query("sid == 1")[['year', 'robbery', 'avg_robbery', 'robbery_yoy', 'robbery_index']]
+```
+:::
+
+## Merging Multiple Data Sets
+
+Often you will have multiple data sets on the same sets of observations. For example, in a data set of companies you might have one file that contains those companies' marketing spending budgets, and in a different file you might have data on their numbers of employees. Or perhaps you have one data set with the population of a bunch of countries in different years (with one row per country per year) and another data set with the names of the capital cities for each country (one row per country). If you want to analyze these variables together you must first merge (or join) the two data sets.
+
+Merging works by identifying a set of *key variables* that are shared by both of the data sets. In at least one of the data sets, those key variables should be the **observation level** of the data, meaning that there is no more than one row with the same combination of those key variables.[^5]
+
+[^5]: Technically you can merge two data sets where the key variables are not the observation level of either data set. This is called a many-to-many merge. However, it's usually a bad idea and if you're doing it you're almost certainly making a mistake.
+
+For example, consider the following two data sets A and B:
+
+```{python}
+#| echo: false
+import pandas as pd
+
+personyeardata = pd.DataFrame({
+    'Person': ['Nadia', 'Nadia', 'Ron', 'Ron'],
+    'Year': [2021, 2022, 2024, 2025],
+    'DaysExercised': [104, 144, 87, 98]
+})
+
+persondata = pd.DataFrame({
+    'Person': ['Nadia', 'Ron', 'Jin'],
+    'Birthplace': ['Seville', 'Paris', 'London']
+})
+
+personyeardata
+
+```
+
+```{python}
+#| echo: false
+persondata
+```
+
+These data sets share the column "Person". Notice that "Person" is the observation level of data set B - there's only one row for each value of Person, with no duplicates. The observation level of data set A is not Person but Person *and* Year (there's one one row for each unique combination of Person and Year).
+
+If I were to merge these data sets, using either the `.join()` method or the `pd.merge()` function, it would go row by row in data set A. "Hmm, OK, the Person in the first row is Nadia. Let's check for Nadia in B. In B, Nadia is born in Seville, so I can add a Birthplace column in data set A where Nadia is born in Seville." Then on to the second row. "The Person in the second row is Nadia again. So the Birthplace column is Seville again" and so on.
+
+```{python}
+#| echo: false
+
+mergeddat = pd.DataFrame({
+    'Person': ['Nadia', 'Nadia', 'Ron', 'Ron'],
+    'Year': [2021, 2022, 2024, 2025],
+    'DaysExercised': [104, 144, 87, 98],
+    'Birthplace': ['Seville','Seville','Paris','Paris']
+})
+mergeddat
+```
+
+Now the data is merged and we can do our Birthplace / DaysExercised analysis.
+
+What about Jin? Jin was in data set B but not data set A. We have some options. One option is an "inner join" (the `how = 'inner'` option in either `.join()` or `pd.merge()`) which keeps only matching observations and drops anyone who didn't match, which is what we did above. Another is a "full join" (`how = 'outer'`) which keeps any non-matching observations and just puts missing values wherever we don't have info, like this:
+
+```{python}
+#| echo: false
+
+outerdat = pd.DataFrame({
+    'Person': ['Nadia', 'Nadia', 'Ron', 'Ron','Jin'],
+    'Year': [2021, 2022, 2024, 2025,pd.NA],
+    'DaysExercised': [104, 144, 87, 98,pd.NA],
+    'Birthplace': ['Seville','Seville','Paris','Paris','London']
+})
+outerdat
+
+```
+
+We can also choose whether or not to keep the non-matching observation based on which data set it's in. In merging, there is a "left" data set (the first one we merge) and a "right" data set (the second). For us, the left data set is A and the right data set is B. We can do a "left join" (`how='left'`), which means "if an observation is in A but not B, keep it. If it's in B but not A, drop it." Similarly there's `how='right'` which keeps observations in B but not A, but drops those in A but not B. For us, Jin would stick around with a `how = 'right'` join but be dropped with a `how = 'left'` join, since he's in the right data set but not the left one.
+
+```{python}
+personyeardata = pd.DataFrame({
+    'Person': ['Nadia', 'Nadia', 'Ron', 'Ron'],
+    'Year': [2021, 2022, 2024, 2025],
+    'DaysExercised': [104, 144, 87, 98]
+})
+
+persondata = pd.DataFrame({
+    'Person': ['Nadia', 'Ron', 'Jin'],
+    'Birthplace': ['Seville', 'Paris', 'London']
+})
+
+# Merge on 'Person'
+merged_data = pd.merge(personyeardata, persondata, on='Person', how='right')
+
+merged_data
+```
+
+#### Now You
+
+1.  Run the below code to load in the two example data sets
+2.  Merge `data1` with `data2` using `pd.merge()`, keeping both departments
+3.  Print out the data set to look at the result
+
+::: panel-tabset
+## Setup
+
+``` python
+import pandas as pd
+data1 = pd.DataFrame({
+    'Month': [1, 1, 2, 2, 3, 3, 4, 4],
+    'Sales': [6, 8, 1, 2, 4, 1, 2, 4],
+    'Department': ['Sales', 'R&D'] * 4
+})
+data2 = pd.DataFrame({
+    'Department': ['Sales'],
+    'Director': ['Lavy']
+})
+```
+
+## Solution
+
+``` r
+import pandas as pd
+data1 = pd.DataFrame({
+    'Month': [1, 1, 2, 2, 3, 3, 4, 4],
+    'Sales': [6, 8, 1, 2, 4, 1, 2, 4],
+    'Department': ['Sales', 'R&D'] * 4
+})
+data2 = pd.DataFrame({
+    'Department': ['Sales'],
+    'Director': ['Lavy']
+})
+
+# We want to keep both departments, so if we do data1 first
+# we want a left join or full/outer join
+# since that will maintain R&D which is in data1 but not data2
+
+merged_data = pd.merge(data1, data2, how = 'left', on = 'Department')  
+merged_data
+# looks good!
+```
+:::
