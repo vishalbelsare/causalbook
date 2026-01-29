@@ -1,4 +1,4 @@
 # causalbook
 Replication code and downloadable example data sets for The Effect
 
-See [here](http://nickchk.com/causalitybook.html) for the book itself.
+See [here](https://theeffectbook.net/) for the book itself.
