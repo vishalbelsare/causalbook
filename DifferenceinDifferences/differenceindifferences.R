@@ -194,7 +194,7 @@ ggsave('prior_trends.pdf',width = 10, height = 5, units = 'in', device = cairo_p
 
 # Regression model
 m <- feols(I(rate/100)~ Treatment | State + Quarter,
-        data = d %>% mutate(Treatment = st & qtr > ymd('2011-07-01')) %>% rename(Quarter = qtr))
+        data = d %>% mutate(Treatment = st & qtr > ymd('2011-07-01')) %>% rename(Quarter = qtr), vcov = ~State)
 
 knitr::opts_current$set(label = 'differenceindifferences-twfe')
 msummary(list('Organ Donation Rate' =m), output = 'did_twfe.tex',
@@ -220,9 +220,9 @@ od <- od %>%
 # Run the same model we did before
 # but with our fake treatment
 clfe1 <- feols(Rate ~ FakeTreat1 | State + Quarter,
-               data = od)
+               data = od, vcov = ~State)
 clfe2 <- feols(Rate ~ FakeTreat2 | State + Quarter,
-               data = od)
+               data = od, vcov = ~State)
 
 knitr::opts_current$set(label = 'differenceindifferences-placebo')
 msummary(list('Second-Period Treatment' = clfe1,
@@ -251,7 +251,7 @@ od <- od %>%
 
 # Interact quarter with being in the treated group
 clfe <- feols(Rate ~ I(State == 'California')*Quarter | State,
-              data = od)
+              data = od, vcov = ~State)
 
 # Use broom::tidy to get the coefficients and SEs
 res <- tidy(clfe) %>%
@@ -481,3 +481,4 @@ p2 <- ggplot(d2, aes(x = date, y = y, linetype = Type, shape = Type)) +
 
 plot_grid(p1,p2)
 ggsave('didid.pdf', width = 8, height = 3.5,device=cairo_pdf)
+
